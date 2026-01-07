@@ -1,7 +1,98 @@
 .header {
 	width: 100%;
 	display: flex;
+	padding: 20px;
 	justify-content: space-between;
+	align-items: center;
 	background: var(--secondary);
+	border-radius: 0px 0px 8px 8px;
+	color: var(--white);
 }
 
+.link_logo {
+	text-decoration: none;
+	color: inherit;
+	transition: all 0.15s ease;
+
+	&:hover {
+		color: var(--highlight);
+	}
+}
+
+.wrapper {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+}
+
+.list,
+.item {
+	display: flex;
+	font-size: 1.2rem;
+	background-color: var(--tertiary);
+	border-radius: 4px;
+	overflow: hidden;
+}
+
+.link {
+	color: inherit;
+	text-decoration: none;
+	padding: 9px 12px;
+	transition: all 0.15s ease;
+
+	&:hover {
+		background-color: var(--highlight);
+		color: black;
+	}
+}
+
+.form {
+	background-color: var(--tertiary);
+	display: flex;
+	align-items: center;
+	border-radius: 4px;
+	gap: 2px;
+	padding: 2px 8px;
+}
+
+.input {
+	background-color: transparent;
+	padding: 8px;
+	border-radius: 10px;
+	border: none;
+	font-size: 1.1rem;
+	outline: none;
+	color: var(--white);
+
+	&::placeholder {
+		color: var(--white);
+	}
+}
+
+.icon {
+	width: 32px;
+	color: var(--white);
+}
+
+.themeButton {
+	background-color: transparent;
+	border: 1px solid var(--white);
+	border-radius: 4px;
+	padding: 2px 4px;
+	transition: all 0.15s ease;
+	cursor: pointer;
+
+	&:hover {
+		background-color: var(--highlight);
+		color: black;
+	}
+}
+
+.themeButton .icon {
+	transition: all 0.15s ease;
+
+	&:hover {
+		background-color: var(--highlight);
+		color: black;
+	}
+}

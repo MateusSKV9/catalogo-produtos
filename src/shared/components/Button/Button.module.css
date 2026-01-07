@@ -1,0 +1,15 @@
+.button {
+	padding: 8px 20px;
+	border-radius: 5px;
+	font-size: 1rem;
+	color: var(--white);
+	border: none;
+}
+
+.edit {
+	background-color: var(--accent-blue);
+}
+
+.delete {
+	background-color: var(--accent-red);
+}

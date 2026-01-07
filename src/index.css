@@ -1,6 +1,7 @@
 :root {
 	--primary: #19191a;
 	--secondary: #343135;
+	--tertiary: #6b6b6b;
 	--text: #fff;
 	--white: #fff;
 	--highlight: #00ff7f;
@@ -29,4 +30,8 @@ body {
 	background-color: var(--primary);
 	color: var(--white);
 	font-family: var(--arial);
+}
+
+ul {
+	list-style: none;
 }
