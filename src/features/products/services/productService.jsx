@@ -8,6 +8,13 @@ export const productService = {
 		return response.json();
 	},
 
+	async getProduct(id) {
+		const response = await fetch(`${API_URL}/${id}`);
+
+		if (!response.ok) throw new Error("Erro ao buscar produto.");
+		return response.json();
+	},
+
 	async create(product) {
 		const response = await fetch(API_URL, {
 			method: "POST",

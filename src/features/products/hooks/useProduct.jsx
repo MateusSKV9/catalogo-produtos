@@ -16,6 +16,23 @@ export function useProduct() {
 		}
 	}
 
+	async function loadProduct(id) {
+		try {
+			const data = await productService.getProduct(id);
+			return data;
+		} catch (error) {
+			console.error(error);
+		}
+	}
+
+	async function updateProduct(project) {
+		try {
+			await productService.update(project);
+		} catch (error) {
+			console.error(error);
+		}
+	}
+
 	async function addProduct(product) {
 		try {
 			await productService.create(product);
@@ -38,7 +55,9 @@ export function useProduct() {
 		}
 	}
 
-	useEffect(() => loadProducts, []);
+	useEffect(() => {
+		loadProducts();
+	}, []);
 
-	return { products, loadProducts, addProduct, removeProduct, loading };
+	return { products, loadProducts, loadProduct, addProduct, removeProduct, loading, updateProduct };
 }

@@ -1,0 +1,11 @@
+.wrapper {
+	width: 100%;
+	max-width: 800px;
+	display: flex;
+	justify-content: space-between;
+}
+
+.container_buttons {
+	display: flex;
+	gap: 4px;
+}

@@ -38,7 +38,7 @@
 	}
 }
 
-.edit {
+.blue {
 	background-color: var(--accent-blue);
 
 	&:hover {
@@ -46,7 +46,7 @@
 	}
 }
 
-.delete {
+.red {
 	background-color: var(--accent-red);
 
 	&:hover {

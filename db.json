@@ -1,16 +1,22 @@
 {
   "products": [
     {
-      "name": "Arroz",
-      "category": "Alimentos",
-      "value": 29.99,
-      "id": "edf6"
+      "id": "d52e",
+      "name": "KSNS",
+      "value": "12",
+      "category": {
+        "id": "1",
+        "name": "Alimentos"
+      }
     },
     {
-      "name": "Arroz",
-      "category": "Alimentos",
-      "value": 29.99,
-      "id": "4f86"
+      "id": "7d37",
+      "name": "aaaaaSSS",
+      "value": "12",
+      "category": {
+        "id": "1",
+        "name": "Alimentos"
+      }
     }
   ],
   "categories": [

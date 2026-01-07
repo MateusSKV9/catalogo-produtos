@@ -20,15 +20,15 @@ export function ProductRow({ product, onDelete }) {
 
 			<div className={styles.first_coll}>
 				<span className={styles.td}>{name}</span>
-				<span className={styles.td}>{category}</span>
+				<span className={styles.td}>{category.name}</span>
 				<span className={styles.td}>{value}</span>
 			</div>
 
 			<div className={`${styles.actions} ${styles.buttons}`}>
-				<Button type="edit" handleClick={handleEdit}>
+				<Button color="blue" type="edit" handleClick={handleEdit}>
 					Editar
 				</Button>
-				<Button type="delete" handleClick={handleDelete}>
+				<Button color="red" type="delete" handleClick={handleDelete}>
 					Deletar
 				</Button>
 			</div>
