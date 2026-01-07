@@ -1,0 +1,26 @@
+{
+  "products": [
+    {
+      "name": "Arroz",
+      "category": "Alimentos",
+      "value": 29.99,
+      "id": "edf6"
+    },
+    {
+      "name": "Arroz",
+      "category": "Alimentos",
+      "value": 29.99,
+      "id": "4f86"
+    }
+  ],
+  "categories": [
+    {
+      "id": "1",
+      "name": "Alimentos"
+    },
+    {
+      "id": "2",
+      "name": "Bebidas"
+    }
+  ]
+}

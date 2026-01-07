@@ -1,37 +1,17 @@
 import styles from "./Pages.module.css";
-import { ProductTable } from "../features/products/components/ProductTable";
-import { useState } from "react";
-
-const productsInitial = [
-	{ id: crypto.randomUUID(), name: "Arroz", category: "Alimentos", value: 29.99 },
-	{ id: crypto.randomUUID(), name: "Feijão", category: "Alimentos", value: 29.99 },
-	{ id: crypto.randomUUID(), name: "Macarrão", category: "Alimentos", value: 29.99 },
-	{ id: crypto.randomUUID(), name: "Farinha", category: "Alimentos", value: 29.99 },
-	{ id: crypto.randomUUID(), name: "Farinha", category: "Alimentos", value: 29.99 },
-	{ id: crypto.randomUUID(), name: "Farinha", category: "Alimentos", value: 29.99 },
-	{ id: crypto.randomUUID(), name: "Farinha", category: "Alimentos", value: 29.99 },
-	{ id: crypto.randomUUID(), name: "Farinha", category: "Alimentos", value: 29.99 },
-	{ id: crypto.randomUUID(), name: "Farinha", category: "Alimentos", value: 29.99 },
-	{ id: crypto.randomUUID(), name: "Farinha", category: "Alimentos", value: 29.99 },
-	{ id: crypto.randomUUID(), name: "Farinha", category: "Alimentos", value: 29.99 },
-	{ id: crypto.randomUUID(), name: "Farinha", category: "Alimentos", value: 29.99 },
-	{ id: crypto.randomUUID(), name: "Farinha", category: "Alimentos", value: 29.99 },
-	{ id: crypto.randomUUID(), name: "Farinha", category: "Alimentos", value: 29.99 },
-	{ id: crypto.randomUUID(), name: "Farinha", category: "Alimentos", value: 29.99 },
-	{ id: crypto.randomUUID(), name: "Farinha", category: "Alimentos", value: 29.99 },
-	{ id: crypto.randomUUID(), name: "Farinha", category: "Alimentos", value: 29.99 },
-];
+import { ProductTable } from "../features/products/components/ProductTable/ProductTable";
+// import { useState } from "react";
+import { ProductHeader } from "../features/products/components/ProductHeader/ProductHeader";
+import { useProduct } from "../features/products/hooks/useProduct";
 
 export function Products() {
-	const [products, setProducts] = useState(productsInitial);
-
-	const heandleDeleteProducts = (id) => setProducts((prev) => prev.filter((product) => product.id !== id));
+	const { products, removeProduct } = useProduct();
 
 	return (
 		<section className={styles.section}>
-			<h1>Products</h1>
+			<ProductHeader length={products.length} />
 
-			<ProductTable products={products} onDelete={heandleDeleteProducts} />
+			{products.length > 0 ? <ProductTable products={products} onDelete={removeProduct} /> : <h1>Lista vazia [;-;]</h1>}
 		</section>
 	);
 }

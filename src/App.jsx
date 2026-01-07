@@ -5,6 +5,7 @@ import { Header } from "./shared/layout/Header/Header";
 import { NewProduct } from "./pages/NewProduct";
 import { Categories } from "./pages/Categories";
 import { Products } from "./pages/Products";
+import { ProductEdit } from "./pages/ProductEdit";
 
 function App() {
 	return (
@@ -15,6 +16,7 @@ function App() {
 					<Route path="/" element={<Products />} />
 					<Route path="/newProduct" element={<NewProduct />} />
 					<Route path="/categories" element={<Categories />} />
+					<Route path="/product/:id" element={<ProductEdit />} />
 				</Routes>
 			</main>
 			<Footer />

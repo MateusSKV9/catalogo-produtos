@@ -1,17 +1,55 @@
 .button {
-	padding: 8px 20px;
+	padding: 5px 20px;
 	border-radius: 5px;
 	font-size: 1.05rem;
 	color: var(--white);
 	border: none;
 	cursor: pointer;
 	width: 50%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 4px;
+	border: 2px solid transparent;
+	transition: all 0.15s ease;
+
+	&:hover {
+		background-color: transparent;
+	}
+
+	&:active {
+		transform: translateY(2px) scale(0.99);
+	}
+}
+
+.icon {
+	width: 25px;
+}
+
+.default {
+	background-color: var(--secondary);
+	width: max-content;
+	font-size: 1.1rem;
+	font-weight: 600;
+
+	&:hover {
+		background-color: var(--highlight);
+		color: var(--primary);
+	}
 }
 
 .edit {
 	background-color: var(--accent-blue);
+
+	&:hover {
+		border-color: var(--accent-blue);
+	}
 }
 
 .delete {
 	background-color: var(--accent-red);
+
+	&:hover {
+		border-color: var(--accent-red);
+	}
 }

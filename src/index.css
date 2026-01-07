@@ -8,7 +8,8 @@
 	--accent-blue: #0088ff;
 	--accent-red: #ff383c;
 
-	--arial: Arial, Helvetica, sans-serif;
+	--roboto: "Roboto", Arial, Helvetica, sans-serif;
+	--inter: "Inter", Arial, Helvetica, sans-serif;
 }
 
 * {
@@ -29,7 +30,7 @@ body {
 	min-height: 100vh;
 	background-color: var(--primary);
 	color: var(--white);
-	font-family: var(--arial);
+	font-family: var(--inter);
 }
 
 ul {
@@ -40,8 +41,4 @@ ul {
 	display: flex;
 	flex-direction: column;
 	gap: 50px;
-}
-
-#root > {
-
 }

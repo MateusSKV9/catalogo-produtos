@@ -3,7 +3,7 @@
 	font-size: 1.2rem;
 	display: grid;
 	grid-template-columns: 1fr;
-	gap: 16px;
+	gap: 8px;
 }
 
 .header {
@@ -11,7 +11,7 @@
 	grid-template-columns: 1fr;
 	/* border-radius: 5px; */
 	overflow: hidden;
-	font-weight: bold;
+	font-weight: 700;
 }
 
 .header .th {
@@ -52,7 +52,7 @@
 .body {
 	display: flex;
 	flex-direction: column;
-	gap: 12px;
+	gap: 8px;
 }
 
 .body .row:hover .first_coll {

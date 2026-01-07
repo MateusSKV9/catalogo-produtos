@@ -1,5 +1,5 @@
 import styles from "./ProductTable.module.css";
-import { ProductRow } from "./ProductRow";
+import { ProductRow } from "../ProductRow/ProductRow";
 
 export function ProductTable({ products, onDelete }) {
 	return (

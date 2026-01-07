@@ -1,13 +1,13 @@
 import { useNavigate } from "react-router";
-import { Button } from "../../../shared/components/Button/Button";
-import styles from "./ProductTable.module.css";
+import { Button } from "../../../../shared/components/Button/Button";
+import styles from "./../ProductTable/ProductTable.module.css";
 
 export function ProductRow({ product, onDelete }) {
-	const navigate = useNavigate();
-	const handleEdit = () => navigate("/newProduct");
-	const handleDelete = () => onDelete(id);
+	const { id, name, category, value } = product;
 
-  const {id, name, category, value } = product;
+	const navigate = useNavigate();
+	const handleDelete = () => onDelete(id);
+	const handleEdit = () => navigate(`/product/${id}`);
 
 	return (
 		<li className={styles.row}>

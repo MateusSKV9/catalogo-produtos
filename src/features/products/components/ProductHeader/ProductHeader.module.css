@@ -1,0 +1,29 @@
+.header {
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+}
+
+.intro {
+	display: flex;
+	justify-content: space-between;
+}
+
+.container_buttons {
+	display: flex;
+	gap: 8px;
+}
+
+.container_badges {
+	width: 100%;
+	display: flex;
+	gap: 10px;
+}
+
+.badge {
+	padding: 25px;
+	font-size: 1.2rem;
+	text-align: center;
+	background-color: var(--secondary);
+	flex-grow: 1;
+}
