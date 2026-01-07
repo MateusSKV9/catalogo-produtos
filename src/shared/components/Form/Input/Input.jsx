@@ -1,8 +1,12 @@
-export function Input({ id, name, label }) {
+import styles from "./Input.module.css";
+
+export function Input({ id, name, label, placeholder }) {
 	return (
-		<div>
-			<label htmlFor={id}>{label}</label>
-			<input type="text" name={name} id={id} />
+		<div className={styles.form_group}>
+			<label className={styles.label} htmlFor={id}>
+				{label}
+			</label>
+			<input className={styles.input} type="text" name={name} id={id} placeholder={placeholder} />
 		</div>
 	);
 }

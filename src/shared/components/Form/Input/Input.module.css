@@ -1,0 +1,15 @@
+.form_group {
+	display: flex;
+	flex-direction: column;
+	gap: 4px;
+}
+
+.label {
+	font-size: 1.1rem;
+}
+
+.input {
+	padding: 6px;
+	font-size: 1rem;
+  border-radius: 4px;
+}
