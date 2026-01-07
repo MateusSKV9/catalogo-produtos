@@ -1,0 +1,32 @@
+:root {
+	--primary: #19191a;
+	--secondary: #343135;
+	--text: #fff;
+	--white: #fff;
+	--highlight: #00ff7f;
+	--accent-blue: #0088ff;
+	--accent-red: #ff383c;
+
+	--arial: Arial, Helvetica, sans-serif;
+}
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+html {
+	background-color: var(--primary);
+	display: flex;
+	justify-content: center;
+}
+
+body {
+	width: 100%;
+	max-width: 1200px;
+	min-height: 100vh;
+	background-color: var(--primary);
+	color: var(--white);
+	font-family: var(--arial);
+}
