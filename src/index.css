@@ -35,3 +35,13 @@ body {
 ul {
 	list-style: none;
 }
+
+#root {
+	display: flex;
+	flex-direction: column;
+	gap: 50px;
+}
+
+#root > {
+
+}

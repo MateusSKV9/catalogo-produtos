@@ -1,9 +1,11 @@
 .button {
 	padding: 8px 20px;
 	border-radius: 5px;
-	font-size: 1rem;
+	font-size: 1.05rem;
 	color: var(--white);
 	border: none;
+	cursor: pointer;
+	width: 50%;
 }
 
 .edit {
