@@ -5,7 +5,6 @@ export const categoryService = {
 		const response = await fetch(API_URL);
 
 		if (!response.ok) throw new Error("Algo deu errado ao buscar as categorias.");
-
 		return response.json();
 	},
 };

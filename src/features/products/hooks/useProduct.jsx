@@ -3,7 +3,7 @@ import { productService } from "../services/productService";
 
 export function useProduct() {
 	const [products, setProducts] = useState([]);
-	// const [loading, setLoading] = useState(false);
+	const [loading, setLoading] = useState(true);
 
 	async function loadProducts() {
 		try {
@@ -11,6 +11,8 @@ export function useProduct() {
 			setProducts(data);
 		} catch (error) {
 			console.error(error);
+		} finally {
+			setLoading(false);
 		}
 	}
 
@@ -20,6 +22,8 @@ export function useProduct() {
 			loadProducts();
 		} catch (error) {
 			console.error(error);
+		} finally {
+			setLoading(false);
 		}
 	}
 
@@ -29,10 +33,12 @@ export function useProduct() {
 			loadProducts();
 		} catch (error) {
 			console.error(error);
+		} finally {
+			setLoading(false);
 		}
 	}
 
 	useEffect(() => loadProducts, []);
 
-	return { products, loadProducts, addProduct, removeProduct };
+	return { products, loadProducts, addProduct, removeProduct, loading };
 }

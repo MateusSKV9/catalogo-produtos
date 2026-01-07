@@ -5,7 +5,6 @@ export const productService = {
 		const response = await fetch(API_URL);
 
 		if (!response.ok) throw new Error("Erro ao buscar produtos.");
-
 		return response.json();
 	},
 
@@ -17,7 +16,6 @@ export const productService = {
 		});
 
 		if (!response.ok) throw new Error("Erro ao criar produto.");
-
 		return response.json();
 	},
 
@@ -29,7 +27,6 @@ export const productService = {
 		});
 
 		if (!response.ok) throw new Error("Erro ao atualizar produto.");
-
 		return response.json();
 	},
 
