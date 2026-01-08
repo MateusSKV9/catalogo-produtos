@@ -5,8 +5,8 @@
       "name": "KSNS",
       "value": "12",
       "category": {
-        "id": "1",
-        "name": "Alimentos"
+        "id": "58be",
+        "name": "ceta"
       }
     },
     {
@@ -16,6 +16,33 @@
       "category": {
         "id": "1",
         "name": "Alimentos"
+      }
+    },
+    {
+      "id": "19f5",
+      "name": "Novo produto",
+      "value": "12",
+      "category": {
+        "id": "2",
+        "name": "Bebidas"
+      }
+    },
+    {
+      "id": "a2a2",
+      "name": "llll",
+      "value": "122",
+      "category": {
+        "id": "1",
+        "name": "Alimentos"
+      }
+    },
+    {
+      "id": "878b",
+      "name": "nnnn",
+      "value": "12",
+      "category": {
+        "id": "2ff7",
+        "name": "cetaj"
       }
     }
   ],
@@ -27,6 +54,14 @@
     {
       "id": "2",
       "name": "Bebidas"
+    },
+    {
+      "id": "58be",
+      "name": "ceta"
+    },
+    {
+      "id": "2ff7",
+      "name": "cetaj"
     }
   ]
 }

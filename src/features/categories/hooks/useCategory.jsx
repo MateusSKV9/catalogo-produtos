@@ -1,13 +1,22 @@
 import { useEffect, useState } from "react";
 import { categoryService } from "../services/categoryService";
 
-export function useCategories() {
+export function useCategory() {
 	const [categories, setCategories] = useState([]);
 
 	async function loadCategories() {
 		try {
 			const data = await categoryService.getAll();
 			setCategories(data);
+		} catch (error) {
+			console.error(error);
+		}
+	}
+
+	async function addCategory(category) {
+		try {
+			await categoryService.create(category);
+			loadCategories();
 		} catch (error) {
 			console.error(error);
 		}
@@ -21,5 +30,5 @@ export function useCategories() {
 		fetchCategories();
 	}, []);
 
-	return categories;
+	return { categories, addCategory };
 }
