@@ -1,13 +1,13 @@
 import { useState } from "react";
-import { useCategories } from "../../../../features/products/hooks/useCategories";
 import { Input } from "../Input/Input";
 import { Select } from "../Select/Select";
 import styles from "./ProductForm.module.css";
 import { useNavigate } from "react-router";
+import { useCategory } from "../../../../features/categories/hooks/useCategory";
+import { Form } from "../Form/Form";
 
 export function ProductForm({ onSubmit, productData }) {
-	const categories = useCategories();
-
+	const { categories } = useCategory();
 	const [product, setProduct] = useState(productData || {});
 
 	const navigate = useNavigate();
@@ -33,7 +33,7 @@ export function ProductForm({ onSubmit, productData }) {
 	};
 
 	return (
-		<form id="product-form" onSubmit={handleOnSubmit} className={styles.form}>
+		<Form id="product-form" handleOnSubmit={handleOnSubmit} className={styles.form}>
 			<Input
 				label="Nome"
 				name="name"
@@ -59,6 +59,6 @@ export function ProductForm({ onSubmit, productData }) {
 					handleCategory={handleCategory}
 				/>
 			</div>
-		</form>
+		</Form>
 	);
 }

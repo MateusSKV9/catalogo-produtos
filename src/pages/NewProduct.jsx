@@ -8,7 +8,7 @@ export function NewProduct() {
 
 	return (
 		<section className={styles.section}>
-			<SectionHeader title="Adicionando Produto" />
+			<SectionHeader title="Adicionando Produto" form="product-form" />
 			<ProductForm onSubmit={addProduct} />
 		</section>
 	);

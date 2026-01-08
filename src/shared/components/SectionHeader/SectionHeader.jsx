@@ -2,7 +2,7 @@ import { useNavigate } from "react-router";
 import { Button } from "../Button/Button";
 import styles from "./SectionHeader.module.css";
 
-export function SectionHeader({ title }) {
+export function SectionHeader({ title, form }) {
 	const navigate = useNavigate();
 
 	const handleClick = () => navigate("/");
@@ -15,7 +15,7 @@ export function SectionHeader({ title }) {
 					<Button handleClick={handleClick} color="red">
 						Cancelar
 					</Button>
-					<Button color="blue" type="save" submit="submit" form="product-form">
+					<Button color="blue" type="save" submit="submit" form={form}>
 						Salvar
 					</Button>
 				</div>
