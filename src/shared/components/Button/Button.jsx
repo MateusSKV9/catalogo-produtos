@@ -27,11 +27,11 @@ const icons = {
 	),
 };
 
-export function Button({ type, children, handleClick, color, submit, form }) {
+export function Button({ type, children, handleClick, color, submit, form, style }) {
 	return (
 		<button
 			onClick={handleClick}
-			className={`${styles.button} ${styles[color]} ${styles[type]}`}
+			className={`${styles.button} ${styles[color]} ${styles[type]} ${style}`}
 			type={submit || "button"}
 			form={form}
 		>

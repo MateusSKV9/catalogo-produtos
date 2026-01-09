@@ -7,7 +7,7 @@ export function NewProduct() {
 	const { addProduct } = useProduct();
 
 	return (
-		<section className={styles.section}>
+		<section className={`${styles.section} ${styles.middle_width}`}>
 			<SectionHeader title="Adicionando Produto" form="product-form" />
 			<ProductForm onSubmit={addProduct} />
 		</section>

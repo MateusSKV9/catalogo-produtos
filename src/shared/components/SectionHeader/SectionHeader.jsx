@@ -10,15 +10,14 @@ export function SectionHeader({ title, form }) {
 	return (
 		<div className={styles.wrapper}>
 			<h1 className={styles.title}>{title}</h1>
-			<div>
-				<div className={styles.container_buttons}>
-					<Button handleClick={handleClick} color="red">
-						Cancelar
-					</Button>
-					<Button color="blue" type="save" submit="submit" form={form}>
-						Salvar
-					</Button>
-				</div>
+
+			<div className={styles.container_buttons}>
+				<Button handleClick={handleClick} color="red">
+					Cancelar
+				</Button>
+				<Button color="blue" type="save" submit="submit" form={form}>
+					Salvar
+				</Button>
 			</div>
 		</div>
 	);
