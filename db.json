@@ -1,67 +1,30 @@
 {
   "products": [
     {
-      "id": "d52e",
-      "name": "KSNS",
-      "value": "12",
-      "category": {
-        "id": "58be",
-        "name": "ceta"
-      }
+      "id": "9fd7",
+      "name": "nova11",
+      "value": "11",
+      "categoryId": null
     },
     {
-      "id": "7d37",
-      "name": "aaaaaSSS",
-      "value": "12",
-      "category": {
-        "id": "1",
-        "name": "Alimentos"
-      }
-    },
-    {
-      "id": "19f5",
-      "name": "Novo produto",
-      "value": "12",
-      "category": {
-        "id": "2",
-        "name": "Bebidas"
-      }
-    },
-    {
-      "id": "a2a2",
-      "name": "llll",
-      "value": "122",
-      "category": {
-        "id": "1",
-        "name": "Alimentos"
-      }
-    },
-    {
-      "id": "878b",
-      "name": "nnnn",
-      "value": "12",
-      "category": {
-        "id": "2ff7",
-        "name": "cetaj"
-      }
+      "id": "916c",
+      "name": "aroz",
+      "value": "22",
+      "categoryId": "1"
     }
   ],
   "categories": [
     {
       "id": "1",
-      "name": "Alimentos"
+      "name": "Alimentosss"
     },
     {
-      "id": "2",
-      "name": "Bebidas"
+      "id": "1678",
+      "name": "teste"
     },
     {
-      "id": "58be",
-      "name": "ceta"
-    },
-    {
-      "id": "2ff7",
-      "name": "cetaj"
+      "id": "e7ed",
+      "name": "jj2023"
     }
   ]
 }

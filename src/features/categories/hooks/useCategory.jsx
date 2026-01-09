@@ -3,6 +3,8 @@ import { categoryService } from "../services/categoryService";
 
 export function useCategory() {
 	const [categories, setCategories] = useState([]);
+	const [categoriesLoading, setCatoriesLoading] = useState(true);
+	const [selectedCategory, setSelectedCategory] = useState(null);
 
 	async function loadCategories() {
 		try {
@@ -10,6 +12,8 @@ export function useCategory() {
 			setCategories(data);
 		} catch (error) {
 			console.error(error);
+		} finally {
+			setCatoriesLoading(false);
 		}
 	}
 
@@ -19,16 +23,48 @@ export function useCategory() {
 			loadCategories();
 		} catch (error) {
 			console.error(error);
+		} finally {
+			setCatoriesLoading(false);
+		}
+	}
+
+	async function update(category) {
+		try {
+			await categoryService.update(category);
+			loadCategories();
+		} catch (error) {
+			console.error(error);
+		}
+	}
+
+	async function remove(id) {
+		try {
+			await categoryService.delete(id);
+			loadCategories();
+		} catch (error) {
+			console.error(error);
 		}
 	}
 
 	useEffect(() => {
-		const fetchCategories = async () => {
-			await loadCategories();
-		};
-
-		fetchCategories();
+		loadCategories();
 	}, []);
 
-	return { categories, addCategory };
+	async function getCategoryById(id) {
+		const data = await categoryService.getCategory(id);
+		setSelectedCategory(data);
+	}
+
+	const clearSelection = () => setSelectedCategory(null);
+
+	return {
+		categories,
+		categoriesLoading,
+		addCategory,
+		selectedCategory, 
+		clearSelection,
+		getCategoryById,
+		update,
+		remove,
+	};
 }

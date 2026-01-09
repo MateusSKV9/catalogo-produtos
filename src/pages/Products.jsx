@@ -6,11 +6,11 @@ import { useProduct } from "../features/products/hooks/useProduct";
 import { Loading } from "../shared/components/Loading/Loading";
 
 export function Products() {
-	const { products, loading, removeProduct } = useProduct();
+	const { products, productsLoading, removeProduct } = useProduct();
 
 	return (
 		<section className={styles.section}>
-			{loading ? (
+			{productsLoading ? (
 				<Loading />
 			) : (
 				<>

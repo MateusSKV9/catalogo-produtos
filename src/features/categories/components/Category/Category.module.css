@@ -1,0 +1,31 @@
+.item {
+	background-color: var(--secondary);
+	padding: 12px;
+	font-size: 1.1rem;
+	border-radius: 5px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	flex-grow: 1;
+
+	cursor: pointer;
+}
+
+.item:hover .actions {
+	pointer-events: auto;
+	visibility: visible;
+	opacity: 1;
+}
+
+.actions {
+	transition: all 0.15s ease;
+	display: flex;
+	gap: 4px;
+	pointer-events: none;
+	visibility: hidden;
+	opacity: 0;
+}
+
+.button {
+	padding: 2px 4px;
+}

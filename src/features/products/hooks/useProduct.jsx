@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
 import { productService } from "../services/productService";
 
-export function useProduct() {
+export function useProduct(id) {
 	const [products, setProducts] = useState([]);
-	const [loading, setLoading] = useState(true);
+	const [product, setProduct] = useState({});
+	const [productsLoading, setProductsLoading] = useState(true);
 
 	async function loadProducts() {
 		try {
@@ -12,7 +13,7 @@ export function useProduct() {
 		} catch (error) {
 			console.error(error);
 		} finally {
-			setLoading(false);
+			setProductsLoading(false);
 		}
 	}
 
@@ -40,7 +41,7 @@ export function useProduct() {
 		} catch (error) {
 			console.error(error);
 		} finally {
-			setLoading(false);
+			setProductsLoading(false);
 		}
 	}
 
@@ -51,7 +52,7 @@ export function useProduct() {
 		} catch (error) {
 			console.error(error);
 		} finally {
-			setLoading(false);
+			setProductsLoading(false);
 		}
 	}
 
@@ -59,5 +60,16 @@ export function useProduct() {
 		loadProducts();
 	}, []);
 
-	return { products, loadProducts, loadProduct, addProduct, removeProduct, loading, updateProduct };
+	useEffect(() => {
+		if (!id) return;
+
+		const fetchProduct = async () => {
+			const data = await productService.getProduct(id);
+			setProduct(data);
+		};
+
+		fetchProduct();
+	}, [id]);
+
+	return { products, product, productsLoading, loadProducts, loadProduct, addProduct, removeProduct, updateProduct };
 }

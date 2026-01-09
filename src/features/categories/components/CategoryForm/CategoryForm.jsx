@@ -1,14 +1,19 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Form } from "../../../../shared/components/Form/Form/Form";
 import { Input } from "../../../../shared/components/Form/Input/Input";
 
-export function CategoryForm({ handleSubmit }) {
-	const [category, setCategory] = useState({});
+export function CategoryForm({ handleSubmit, categoryData }) {
+	const [category, setCategory] = useState(categoryData);
+
+	// Essencial: Atualiza o estado interno quando a prop mudar
+	useEffect(() => {
+		setCategory(categoryData);
+	}, [categoryData]);
 
 	const handleCategory = (e) => {
 		e.preventDefault();
 		handleSubmit(category);
-		setCategory({});
+		setCategory({}); // Limpa após envio
 	};
 
 	const handleChange = (e) => {

@@ -19,4 +19,33 @@ export const categoryService = {
 
 		return response.json();
 	},
+
+	async getCategory(id) {
+		const response = await fetch(`${API_URL}/${id}`);
+
+		if (!response.ok) throw new Error("Erro ao buscar categoria.");
+
+		return response.json();
+	},
+
+	async update(category) {
+		const response = await fetch(`${API_URL}/${category.id}`, {
+			method: "PUT",
+			headers: { "Content-Type": "application/json" },
+			body: JSON.stringify(category),
+		});
+
+		if (!response.ok) throw new Error("Errp ao atualizar categoria.");
+
+		return response.json();
+	},
+
+	async delete(id) {
+		const response = await fetch(`${API_URL}/${id}`, {
+			method: "DELETE",
+			headers: { "Content-Type": "application/json" },
+		});
+
+		if (!response.ok) throw new Error("Erro algo atualizar categoria.");
+	},
 };

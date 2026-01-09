@@ -25,10 +25,7 @@ export function ProductForm({ onSubmit, productData }) {
 	const handleCategory = (e) => {
 		setProduct((prev) => ({
 			...prev,
-			category: {
-				id: e.target.value,
-				name: e.target.options[e.target.selectedIndex].text,
-			},
+			categoryId: e.target.value,
 		}));
 	};
 
@@ -53,8 +50,8 @@ export function ProductForm({ onSubmit, productData }) {
 				/>
 				<Select
 					label="Categoria"
-					value={product?.category ? product.category.id : ""}
-					id={product?.category?.id}
+					value={product?.categoryId ? product.categoryId : ""}
+					id={product?.categoryId}
 					options={categories}
 					handleCategory={handleCategory}
 				/>

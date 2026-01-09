@@ -1,11 +1,16 @@
 import { useNavigate } from "react-router";
 import { Button } from "../../../../shared/components/Button/Button";
 import styles from "./../ProductTable/ProductTable.module.css";
+import { useCategory } from "../../../categories/hooks/useCategory";
 
 export function ProductRow({ product, onDelete }) {
-	const { id, name, category, value } = product;
+	const { id, name, categoryId, value } = product;
+	const { categories } = useCategory();
 
 	const navigate = useNavigate();
+
+	const categoryData = categories.find((category) => category.id === categoryId);
+
 	const handleDelete = () => onDelete(id);
 	const handleEdit = () => navigate(`/product/${id}`);
 
@@ -20,7 +25,7 @@ export function ProductRow({ product, onDelete }) {
 
 			<div className={styles.first_coll}>
 				<span className={styles.td}>{name}</span>
-				<span className={styles.td}>{category.name}</span>
+				<span className={styles.td}>{categoryData ? categoryData.name : "Sem categoria"}</span>
 				<span className={styles.td}>{value}</span>
 			</div>
 
