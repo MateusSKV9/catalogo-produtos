@@ -39,7 +39,7 @@
 
 .row {
 	display: grid;
-	grid-template-columns: 3fr 1fr;
+	grid-template-columns: 3fr 288px;
 	align-content: center;
 	/* border-radius: 5px; */
 	transition: all 0.15s ease;
@@ -99,7 +99,7 @@
 .buttons {
 	display: flex;
 	justify-content: center;
-	align-content: center;
+	align-items: center;
 	gap: 10px;
 	transition: all 0.15s ease;
 
@@ -108,4 +108,30 @@
 	}
 
 	/* border-radius: 5px; */
+}
+
+@media screen and (max-width: 768px) {
+	.body {
+		gap: 30px;
+	}
+
+	.header {
+		display: none;
+	}
+
+	.row {
+		grid-template-columns: 1fr;
+		gap: 0px;
+	}
+
+	.first_coll {
+		display: flex;
+		flex-direction: column;
+	}
+
+	.buttons {
+		& > button:first-of-type {
+			order: 3;
+		}
+	}
 }

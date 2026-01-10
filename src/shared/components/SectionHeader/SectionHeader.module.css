@@ -9,3 +9,19 @@
 	display: flex;
 	gap: 4px;
 }
+
+.title {
+	color: var(--text);
+}
+
+@media screen and (max-width: 768px) {
+	.wrapper {
+		flex-direction: column;
+		text-align: center;
+		gap: 20px;
+	}
+
+	.container_buttons {
+		/* flex-direction: column; */
+	}
+}

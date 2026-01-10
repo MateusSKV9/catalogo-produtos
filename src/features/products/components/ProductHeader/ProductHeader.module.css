@@ -10,6 +10,10 @@
 	justify-content: space-between;
 }
 
+.title {
+	color: var(--text);
+}
+
 .container_buttons {
 	display: flex;
 	gap: 8px;
@@ -27,4 +31,22 @@
 	text-align: center;
 	background-color: var(--secondary);
 	flex-grow: 1;
+}
+
+@media screen and (max-width: 768px) {
+	.intro {
+		flex-direction: column;
+	}
+
+	.container_buttons {
+		flex-direction: column;
+
+		& > * {
+			width: 100%;
+		}
+	}
+
+	.container_badges {
+		flex-direction: column;
+	}
 }

@@ -7,6 +7,8 @@
 	--highlight: #00ff7f;
 	--accent-blue: #0088ff;
 	--accent-red: #ff383c;
+	--button-hover: #343135;
+  --black: #19191a;
 
 	--roboto: "Roboto", Arial, Helvetica, sans-serif;
 	--inter: "Inter", Arial, Helvetica, sans-serif;
@@ -27,6 +29,7 @@ html {
 	background-color: var(--primary);
 	display: flex;
 	justify-content: center;
+  padding: 16px;
 }
 
 body {

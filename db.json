@@ -29,6 +29,12 @@
       "name": "Salgadinho grande",
       "value": "1,50",
       "categoryId": "1"
+    },
+    {
+      "id": "c13d",
+      "name": "ss",
+      "value": "12",
+      "categoryId": "1"
     }
   ],
   "categories": [
