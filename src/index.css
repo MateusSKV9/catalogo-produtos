@@ -12,6 +12,11 @@
 	--inter: "Inter", Arial, Helvetica, sans-serif;
 }
 
+[data-theme="dark"] {
+	--primary: whitesmoke;
+	--text: #19191a;
+}
+
 * {
 	margin: 0;
 	padding: 0;

@@ -1,9 +1,12 @@
 import { Link, useNavigate, useSearchParams } from "react-router";
 import styles from "./Header.module.css";
+import { useTheme } from "../../../providers/ThemeContext";
 
 export function Header() {
 	const navigate = useNavigate();
 	const [searchParams] = useSearchParams();
+
+	const { toggleTheme } = useTheme();
 
 	const onChange = (e) => {
 		const value = e.target.value;
@@ -46,7 +49,7 @@ export function Header() {
 						placeholder="Pesquisar"
 					/>
 				</form>
-				<button className={styles.themeButton} type="button">
+				<button onClick={toggleTheme} className={styles.themeButton} type="button">
 					<svg className={styles.icon} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640">
 						<path
 							fill="currentColor"
