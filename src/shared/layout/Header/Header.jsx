@@ -1,7 +1,19 @@
-import { Link } from "react-router";
+import { Link, useNavigate, useSearchParams } from "react-router";
 import styles from "./Header.module.css";
 
 export function Header() {
+	const navigate = useNavigate();
+	const [searchParams] = useSearchParams();
+
+	const onChange = (e) => {
+		const value = e.target.value;
+		if (value) {
+			navigate(`/?search=${value}`);
+		} else {
+			navigate("/");
+		}
+	};
+
 	return (
 		<header className={styles.header}>
 			<Link className={styles.link_logo} to="/">
@@ -24,7 +36,15 @@ export function Header() {
 						/>
 					</svg>
 
-					<input className={styles.input} type="text" name="search" id="search" placeholder="Pesquisar" />
+					<input
+						className={styles.input}
+						onChange={onChange}
+						type="text"
+						name="search"
+						id="search"
+						defaultValue={searchParams.get("search") || ""}
+						placeholder="Pesquisar"
+					/>
 				</form>
 				<button className={styles.themeButton} type="button">
 					<svg className={styles.icon} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640">
