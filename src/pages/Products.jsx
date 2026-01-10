@@ -13,13 +13,15 @@ export function Products() {
 
 	const displayProducts = products.filter((product) => product.name.toLowerCase().includes(query));
 
+	const uniqueCategoriesCount = new Set(displayProducts.map((product) => product.categoryId)).size;
+
 	return (
 		<section className={styles.section}>
 			{productsLoading ? (
 				<Loading />
 			) : (
 				<>
-					<ProductHeader length={products.length} />
+					<ProductHeader quantityProducts={displayProducts.length} quantityCategories={uniqueCategoriesCount} />
 
 					{products.length > 0 ? (
 						<ProductTable products={displayProducts} onDelete={removeProduct} />

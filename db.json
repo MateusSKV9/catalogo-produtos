@@ -1,30 +1,44 @@
 {
   "products": [
     {
-      "id": "9fd7",
-      "name": "nova11",
-      "value": "11",
-      "categoryId": null
-    },
-    {
       "id": "916c",
       "name": "aroz",
-      "value": "22",
+      "value": "9,0",
+      "categoryId": "1"
+    },
+    {
+      "id": "9f40",
+      "name": "Skoll Litrão",
+      "value": "10,00",
+      "categoryId": "d1c3"
+    },
+    {
+      "id": "eac1",
+      "name": "Feijão",
+      "value": "8,50",
+      "categoryId": "1"
+    },
+    {
+      "id": "e0b4",
+      "name": "Salgadinho pequeno",
+      "value": "1,00",
+      "categoryId": "1"
+    },
+    {
+      "id": "df79",
+      "name": "Salgadinho grande",
+      "value": "1,50",
       "categoryId": "1"
     }
   ],
   "categories": [
     {
       "id": "1",
-      "name": "Alimentosss"
+      "name": "Alimentos"
     },
     {
-      "id": "1678",
-      "name": "teste"
-    },
-    {
-      "id": "e7ed",
-      "name": "jj2023"
+      "id": "d1c3",
+      "name": "Bebidas"
     }
   ]
 }
