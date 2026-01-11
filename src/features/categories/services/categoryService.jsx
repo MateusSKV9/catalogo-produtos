@@ -1,4 +1,4 @@
-const API_URL = "http://localhost:3000/categories";
+const API_URL = "https://json-server-5bev.onrender.com/categories_catalog";
 
 export const categoryService = {
 	async getAll() {

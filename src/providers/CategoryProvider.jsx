@@ -1,37 +1,41 @@
-import { useEffect, useState } from "react";
-import { categoryService } from "../services/categoryService";
+import { useEffect, useState, useCallback } from "react";
+import { categoryService } from "./../features/categories/services/categoryService";
+import { CategoryContext } from "../features/categories/hooks/useCategory";
 
-export function useCategory() {
+export function CategoryProvider({ children }) {
 	const [categories, setCategories] = useState([]);
-	const [categoriesLoading, setCatoriesLoading] = useState(true);
+	const [categoriesLoading, setCategoriesLoading] = useState(true);
 	const [selectedCategory, setSelectedCategory] = useState(null);
 
-	async function loadCategories() {
+	const loadCategories = useCallback(async () => {
 		try {
+			setCategoriesLoading(true);
 			const data = await categoryService.getAll();
 			setCategories(data);
 		} catch (error) {
-			console.error(error);
+			console.error("Erro ao carregar categorias:", error);
 		} finally {
-			setCatoriesLoading(false);
+			setCategoriesLoading(false);
 		}
-	}
+	}, []);
+
+	useEffect(() => {
+		loadCategories();
+	}, [loadCategories]);
 
 	async function addCategory(category) {
 		try {
 			await categoryService.create(category);
-			loadCategories();
+			await loadCategories();
 		} catch (error) {
 			console.error(error);
-		} finally {
-			setCatoriesLoading(false);
 		}
 	}
 
 	async function update(category) {
 		try {
 			await categoryService.update(category);
-			loadCategories();
+			await loadCategories();
 		} catch (error) {
 			console.error(error);
 		}
@@ -40,15 +44,11 @@ export function useCategory() {
 	async function remove(id) {
 		try {
 			await categoryService.delete(id);
-			loadCategories();
+			await loadCategories();
 		} catch (error) {
 			console.error(error);
 		}
 	}
-
-	useEffect(() => {
-		loadCategories();
-	}, []);
 
 	async function getCategoryById(id) {
 		const data = await categoryService.getCategory(id);
@@ -57,14 +57,17 @@ export function useCategory() {
 
 	const clearSelection = () => setSelectedCategory(null);
 
-	return {
+	const value = {
 		categories,
 		categoriesLoading,
 		addCategory,
-		selectedCategory, 
+		selectedCategory,
 		clearSelection,
 		getCategoryById,
 		update,
 		remove,
+		loadCategories,
 	};
+
+	return <CategoryContext.Provider value={value}>{children}</CategoryContext.Provider>;
 }

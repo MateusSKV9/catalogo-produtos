@@ -24,7 +24,7 @@ export function ProductRow({ product, onDelete }) {
 			</svg>
 
 			<div className={styles.first_coll}>
-				<span className={`${styles.td}` }>{name}</span>
+				<span className={`${styles.td}`}>{name}</span>
 				<span className={styles.td}>{categoryData ? categoryData.name : "Sem categoria"}</span>
 				<span className={styles.td}>R$ {value}</span>
 			</div>

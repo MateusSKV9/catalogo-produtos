@@ -5,9 +5,11 @@ import { ProductHeader } from "../features/products/components/ProductHeader/Pro
 import { useProduct } from "../features/products/hooks/useProduct";
 import { Loading } from "../shared/components/Loading/Loading";
 import { useSearchParams } from "react-router";
+import { useCategory } from "../features/categories/hooks/useCategory";
 
 export function Products() {
 	const { products, productsLoading, removeProduct } = useProduct();
+	const { categoriesLoading } = useCategory();
 	const [searchParams] = useSearchParams();
 	const queryProducts = searchParams.get("search")?.toLowerCase() || "";
 	const filterByCategory = searchParams.get("category")?.toLowerCase() || "";
@@ -20,7 +22,7 @@ export function Products() {
 
 	return (
 		<section className={styles.section}>
-			{productsLoading ? (
+			{productsLoading || categoriesLoading ? (
 				<Loading />
 			) : (
 				<>

@@ -2,15 +2,9 @@
   "products": [
     {
       "id": "916c",
-      "name": "aroz",
+      "name": "arroz",
       "value": "9,0",
       "categoryId": "1"
-    },
-    {
-      "id": "9f40",
-      "name": "Skoll Litrão",
-      "value": "10,00",
-      "categoryId": "d1c3"
     },
     {
       "id": "eac1",
@@ -31,10 +25,16 @@
       "categoryId": "1"
     },
     {
-      "id": "c13d",
-      "name": "ss",
-      "value": "12",
-      "categoryId": "1"
+      "id": "ca0e",
+      "name": "Refrigerante",
+      "value": "7",
+      "categoryId": "d1c3"
+    },
+    {
+      "id": "5c4f",
+      "name": "Energético",
+      "value": "5",
+      "categoryId": "d1c3"
     }
   ],
   "categories": [
@@ -45,6 +45,10 @@
     {
       "id": "d1c3",
       "name": "Bebidas"
+    },
+    {
+      "id": "2155",
+      "name": "Carnes"
     }
   ]
 }

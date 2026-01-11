@@ -6,7 +6,7 @@ import { useEffect, useRef, useState } from "react";
 export function Header() {
 	const navigate = useNavigate();
 	const [searchParams] = useSearchParams();
-	const [showMenu, setShowMenu] = useState(false);
+	const [showMenu, setShowMenu] = useState(window.innerWidth > 768);
 	const menuRef = useRef(null);
 	const btnRef = useRef(null);
 	const { toggleTheme } = useTheme();
@@ -25,6 +25,7 @@ export function Header() {
 			if (
 				showMenu &&
 				menuRef.current &&
+				btnRef.current &&
 				!btnRef.current.contains(event.target) &&
 				!menuRef.current.contains(event.target)
 			) {
@@ -33,7 +34,9 @@ export function Header() {
 			console.log("a");
 		}
 
-		document.addEventListener("mousedown", handleCLickOutside);
+		if (window.innerWidth <= 768) {
+			document.addEventListener("mousedown", handleCLickOutside);
+		}
 
 		return () => document.removeEventListener("mousedown", handleCLickOutside);
 	}, [showMenu]);

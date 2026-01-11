@@ -1,4 +1,4 @@
-const API_URL = "http://localhost:3000/products";
+const API_URL = "https://json-server-5bev.onrender.com/products_catalog";
 
 export const productService = {
 	async getAll() {
