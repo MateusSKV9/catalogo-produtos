@@ -37,7 +37,7 @@ export function useProduct(id) {
 	async function addProduct(product) {
 		try {
 			await productService.create(product);
-			loadProducts();
+			await loadProducts();
 		} catch (error) {
 			console.error(error);
 		} finally {

@@ -12,9 +12,9 @@ export function ProductForm({ onSubmit, productData }) {
 
 	const navigate = useNavigate();
 
-	const handleOnSubmit = (e) => {
+	const handleOnSubmit = async (e) => {
 		e.preventDefault();
-		onSubmit(product);
+		await onSubmit(product);
 		navigate("/");
 	};
 
