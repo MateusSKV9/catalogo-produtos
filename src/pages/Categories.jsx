@@ -40,7 +40,7 @@ export function Categories() {
 				<Loading />
 			) : (
 				<>
-					<h2 className={styles.title}>Categorias</h2>
+					<h1 className={styles.title}>Categorias</h1>
 					<ul className={styles.container_categories}>
 						{categories.map((cat) => (
 							<Category

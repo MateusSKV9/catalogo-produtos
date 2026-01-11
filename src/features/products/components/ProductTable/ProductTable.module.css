@@ -115,6 +115,21 @@
 		gap: 30px;
 	}
 
+	.name {
+		font-size: 1.25rem;
+		font-weight: bold;
+		&::before {
+			content: "Produto:";
+			margin-right: 4px;
+		}
+	}
+	.category {
+		&::before {
+			content: "Categoria:";
+			margin-right: 4px;
+		}
+	}
+
 	.header {
 		display: none;
 	}

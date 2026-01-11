@@ -9,7 +9,7 @@ export function SectionHeader({ title, form }) {
 
 	return (
 		<div className={styles.wrapper}>
-			<h1 className={styles.title}>{title}</h1>
+			<h2 className={styles.title}>{title}</h2>
 
 			<div className={styles.container_buttons}>
 				<Button handleClick={handleClick} color="red">
