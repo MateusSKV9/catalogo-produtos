@@ -14,6 +14,7 @@ export function Input({ id, name, value, label, placeholder, handleChange }) {
 				value={value}
 				onChange={handleChange}
 				placeholder={placeholder}
+				required
 			/>
 		</div>
 	);

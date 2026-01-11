@@ -7,7 +7,7 @@ export function Select({ id, name, label, options, value, handleCategory }) {
 			<label className={styles.label} htmlFor={id}>
 				{label}
 			</label>
-			<select className={stylesSelect.select} name={name} id={id} value={value} onChange={handleCategory}>
+			<select required className={stylesSelect.select} name={name} id={id} value={value} onChange={handleCategory}>
 				<option disabled value="">
 					Selecione uma categoria
 				</option>
