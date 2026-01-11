@@ -1,0 +1,17 @@
+.spinner {
+	width: 20px;
+	height: 20px;
+	border: 3px solid var(--highlight);
+	animation: load 1s ease infinite;
+	border-color: transparent var(--highlight);
+	border-radius: 50%;
+}
+
+@keyframes load {
+	to {
+		transform: rotate(0deg);
+	}
+	from {
+		transform: rotate(360deg);
+	}
+}

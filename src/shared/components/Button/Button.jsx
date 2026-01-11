@@ -1,3 +1,4 @@
+import { Spinner } from "../Spinner/Spinner";
 import styles from "./Button.module.css";
 
 const icons = {
@@ -27,15 +28,16 @@ const icons = {
 	),
 };
 
-export function Button({ type, children, handleClick, color, submit, form, style }) {
+export function Button({ type, children, handleClick, color, submit, form, style, isLoading }) {
 	return (
 		<button
 			onClick={handleClick}
-			className={`${styles.button} ${styles[color]} ${styles[type]} ${style}`}
+			className={`${styles.button} ${styles[color]} ${styles[type]} ${style} ${styles.disabled && isLoading}`}
 			type={submit || "button"}
 			form={form}
+			disabled={isLoading}
 		>
-			{children}
+			{isLoading ? <Spinner /> : children}
 			{icons[type]}
 		</button>
 	);
