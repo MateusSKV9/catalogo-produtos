@@ -7,7 +7,7 @@ import { Form } from "../Form/Form";
 import { useCategory } from "../../../../features/categories/hooks/useCategory";
 
 export function ProductForm({ onSubmit, productData }) {
-	const { categories } = useCategory;
+	const { categories } = useCategory();
 	const [product, setProduct] = useState(productData || {});
 
 	const navigate = useNavigate();
