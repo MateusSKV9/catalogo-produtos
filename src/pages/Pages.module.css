@@ -24,3 +24,7 @@
 	width: 100%;
 	max-width: 800px;
 }
+
+.empty_list {
+	color: var(--text);
+}

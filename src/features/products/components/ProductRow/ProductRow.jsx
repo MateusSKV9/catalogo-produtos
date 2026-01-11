@@ -2,16 +2,27 @@ import { useNavigate } from "react-router";
 import { Button } from "../../../../shared/components/Button/Button";
 import styles from "./../ProductTable/ProductTable.module.css";
 import { useCategory } from "../../../categories/hooks/useCategory";
+import { useState } from "react";
+import { Spinner } from "../../../../shared/components/Spinner/Spinner";
 
 export function ProductRow({ product, onDelete }) {
 	const { id, name, categoryId, value } = product;
 	const { categories } = useCategory();
+	const [isDeleting, setIsDeleting] = useState(false); // Estado local da linha
 
 	const navigate = useNavigate();
 
 	const categoryData = categories.find((category) => category.id === categoryId);
 
-	const handleDelete = () => onDelete(id);
+	const handleDelete = async () => {
+		setIsDeleting(true); // Começa o loading apenas para esta linha
+		try {
+			await onDelete(id); // Espera a deleção no banco e o loadProducts
+		} catch (error) {
+			console.error(error);
+			setIsDeleting(false); // Só volta ao normal se der erro (se der certo, a linha some)
+		}
+	};
 	const handleEdit = () => navigate(`/product/${id}`);
 
 	return (
@@ -33,8 +44,8 @@ export function ProductRow({ product, onDelete }) {
 				<Button color="blue" type="edit" handleClick={handleEdit}>
 					Editar
 				</Button>
-				<Button color="red" type="delete" handleClick={handleDelete}>
-					Deletar
+				<Button color="red" type="delete" handleClick={handleDelete} isLoading={isDeleting}>
+					{isDeleting ? <Spinner /> : "Deletar"}
 				</Button>
 			</div>
 		</li>

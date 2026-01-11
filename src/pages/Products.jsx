@@ -31,7 +31,7 @@ export function Products() {
 					{products.length > 0 ? (
 						<ProductTable products={displayProducts} onDelete={removeProduct} />
 					) : (
-						<h1>Lista vazia [;-;]</h1>
+						<h2 className={styles.empty_list}>Lista vazia [;-;]</h2>
 					)}
 				</>
 			)}
