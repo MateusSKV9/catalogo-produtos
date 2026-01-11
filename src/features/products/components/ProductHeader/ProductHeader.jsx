@@ -1,11 +1,33 @@
-import { useNavigate } from "react-router";
+import { useNavigate, useSearchParams } from "react-router";
 import { Button } from "../../../../shared/components/Button/Button";
 import styles from "./ProductHeader.module.css";
+import { CategoryFilter } from "../../../categories/components/CategoryFilter/CategoryFilter";
+import { useEffect, useRef, useState } from "react";
 
 export function ProductHeader({ quantityProducts, quantityCategories }) {
 	const navigate = useNavigate();
 	const handleNewProduct = () => navigate("/newproduct");
 	const handleCategories = () => navigate("/categories");
+	const [showBoxFilter, setShowBoxFilter] = useState(false);
+	const [searchParams] = useSearchParams();
+	const categoryId = searchParams.get("category");
+	const filterRef = useRef(null);
+
+	const handleFilter = () => setShowBoxFilter((prev) => !prev);
+
+	useEffect(() => {
+		function handleClickOUtside(event) {
+			if (setShowBoxFilter && filterRef.current && !filterRef.current.contains(event.target)) {
+				setShowBoxFilter(false);
+			}
+		}
+
+		document.addEventListener("mousedown", handleClickOUtside);
+
+		return () => {
+			document.removeEventListener("mousedown", handleClickOUtside);
+		};
+	}, [showBoxFilter]);
 
 	return (
 		<div className={styles.header}>
@@ -18,7 +40,12 @@ export function ProductHeader({ quantityProducts, quantityCategories }) {
 					<Button handleClick={handleCategories} type="default">
 						Categorias
 					</Button>
-					<Button type="default">Filtrar por</Button>
+					<div ref={filterRef} style={{ position: "relative" }}>
+						<Button color={categoryId && "highlight"} handleClick={handleFilter} type="default">
+							Filtrar por
+						</Button>
+						{showBoxFilter && <CategoryFilter />}
+					</div>
 				</div>
 			</div>
 			<div className={styles.container_badges}>

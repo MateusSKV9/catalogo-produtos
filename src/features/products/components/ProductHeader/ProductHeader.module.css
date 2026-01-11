@@ -17,6 +17,7 @@
 .container_buttons {
 	display: flex;
 	gap: 8px;
+	position: relative;
 }
 
 .container_badges {

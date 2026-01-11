@@ -9,9 +9,12 @@ import { useSearchParams } from "react-router";
 export function Products() {
 	const { products, productsLoading, removeProduct } = useProduct();
 	const [searchParams] = useSearchParams();
-	const query = searchParams.get("search")?.toLowerCase() || "";
+	const queryProducts = searchParams.get("search")?.toLowerCase() || "";
+	const filterByCategory = searchParams.get("category")?.toLowerCase() || "";
 
-	const displayProducts = products.filter((product) => product.name.toLowerCase().includes(query));
+	const displayProducts = filterByCategory
+		? products.filter((product) => product.categoryId === filterByCategory)
+		: products.filter((product) => product.name.toLowerCase().includes(queryProducts));
 
 	const uniqueCategoriesCount = new Set(displayProducts.map((product) => product.categoryId)).size;
 
