@@ -8,19 +8,19 @@ import { Spinner } from "../../../../shared/components/Spinner/Spinner";
 export function ProductRow({ product, onDelete }) {
 	const { id, name, categoryId, value } = product;
 	const { categories } = useCategory();
-	const [isDeleting, setIsDeleting] = useState(false); // Estado local da linha
+	const [isDeleting, setIsDeleting] = useState(false);
 
 	const navigate = useNavigate();
 
 	const categoryData = categories.find((category) => category.id === categoryId);
 
 	const handleDelete = async () => {
-		setIsDeleting(true); // Começa o loading apenas para esta linha
+		setIsDeleting(true);
 		try {
-			await onDelete(id); // Espera a deleção no banco e o loadProducts
+			await onDelete(id);
 		} catch (error) {
 			console.error(error);
-			setIsDeleting(false); // Só volta ao normal se der erro (se der certo, a linha some)
+			setIsDeleting(false);
 		}
 	};
 	const handleEdit = () => navigate(`/product/${id}`);
@@ -45,7 +45,7 @@ export function ProductRow({ product, onDelete }) {
 					Editar
 				</Button>
 				<Button color="red" type="delete" handleClick={handleDelete} isLoading={isDeleting}>
-					{isDeleting ? <Spinner /> : "Deletar"}
+					Deletar
 				</Button>
 			</div>
 		</li>

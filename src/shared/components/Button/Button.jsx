@@ -37,8 +37,8 @@ export function Button({ type, children, handleClick, color, submit, form, style
 			form={form}
 			disabled={isLoading}
 		>
-			{isLoading ? <Spinner length="small" /> : children}
-			{icons[type]}
+			{children}
+			{isLoading ? <Spinner length="small" /> : <>{icons[type]}</>}
 		</button>
 	);
 }

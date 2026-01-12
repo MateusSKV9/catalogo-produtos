@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { productService } from "../services/productService";
 
 export function useProduct(id) {
@@ -6,7 +6,7 @@ export function useProduct(id) {
 	const [product, setProduct] = useState({});
 	const [productsLoading, setProductsLoading] = useState(true);
 
-	async function loadProducts() {
+	const loadProducts = useCallback(async () => {
 		try {
 			const data = await productService.getAll();
 			setProducts(data);
@@ -15,16 +15,7 @@ export function useProduct(id) {
 		} finally {
 			setProductsLoading(false);
 		}
-	}
-
-	async function loadProduct(id) {
-		try {
-			const data = await productService.getProduct(id);
-			return data;
-		} catch (error) {
-			console.error(error);
-		}
-	}
+	}, []);
 
 	async function updateProduct(project) {
 		try {
@@ -57,19 +48,25 @@ export function useProduct(id) {
 	}
 
 	useEffect(() => {
-		loadProducts();
-	}, []);
-
-	useEffect(() => {
-		if (!id) return;
+		if (!id) {
+			loadProducts();
+			return;
+		}
 
 		const fetchProduct = async () => {
-			const data = await productService.getProduct(id);
-			setProduct(data);
+			setProductsLoading(true);
+			try {
+				const data = await productService.getProduct(id);
+				setProduct(data);
+			} catch (error) {
+				console.error(error);
+			} finally {
+				setProductsLoading(false);
+			}
 		};
 
 		fetchProduct();
-	}, [id]);
+	}, [id, loadProducts]);
 
-	return { products, product, productsLoading, loadProducts, loadProduct, addProduct, removeProduct, updateProduct };
+	return { products, product, productsLoading, loadProducts, addProduct, removeProduct, updateProduct };
 }

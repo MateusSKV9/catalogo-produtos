@@ -1,4 +1,4 @@
-// import { useState } from "react";
+import { useState } from "react";
 import { Category } from "../features/categories/components/Category/Category";
 import { CategoryForm } from "../features/categories/components/CategoryForm/CategoryForm";
 import { useCategory } from "../features/categories/hooks/useCategory";
@@ -20,22 +20,30 @@ export function Categories() {
 
 	const isEditing = !!selectedCategory;
 
+	const [saving, setSaving] = useState(false);
+
 	const handleSave = async (data) => {
+		setSaving(true);
 		if (isEditing) {
 			await update(data);
 			clearSelection();
 		} else {
 			await addCategory(data);
 		}
+		setSaving(false);
 	};
 
-	const handleEditClick = (id) => {
-		getCategoryById(id);
-	};
+	// const handleEditClick = (id) => {
+	// 	getCategoryById(id);
+	// };
 
-	const handleOnRemove = (id) => {
-		remove(id);
-	};
+	// const handleOnRemove = async (id) => {
+	// 	try {
+	// 		await remove(id);
+	// 	} catch (error) {
+	// 		console.error(error);
+	// 	}
+	// };
 
 	return (
 		<section className={`${styles.section} ${styles.middle_width}`}>
@@ -46,16 +54,14 @@ export function Categories() {
 					<h1 className={styles.title}>Categorias</h1>
 					<ul className={styles.container_categories}>
 						{categories.map((cat) => (
-							<Category
-								key={cat.id}
-								id={cat.id}
-								name={cat.name}
-								setToEdit={() => handleEditClick(cat.id)}
-								handleRemove={() => handleOnRemove(cat.id)}
-							/>
+							<Category key={cat.id} id={cat.id} name={cat.name} setToEdit={getCategoryById} handleRemove={remove} />
 						))}
 					</ul>
-					<SectionHeader title={isEditing ? "Editando Categoria" : "Adicionar categoria"} form="category-form" />
+					<SectionHeader
+						title={isEditing ? "Editando Categoria" : "Adicionar categoria"}
+						form="category-form"
+						isLoading={saving}
+					/>
 
 					<CategoryForm categoryData={selectedCategory || {}} handleSubmit={handleSave} />
 				</>

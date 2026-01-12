@@ -5,7 +5,6 @@ import { Input } from "../../../../shared/components/Form/Input/Input";
 export function CategoryForm({ handleSubmit, categoryData }) {
 	const [category, setCategory] = useState(categoryData);
 
-	// Essencial: Atualiza o estado interno quando a prop mudar
 	useEffect(() => {
 		setCategory(categoryData);
 	}, [categoryData]);
@@ -13,7 +12,7 @@ export function CategoryForm({ handleSubmit, categoryData }) {
 	const handleCategory = (e) => {
 		e.preventDefault();
 		handleSubmit(category);
-		setCategory({}); // Limpa após envio
+		setCategory({});
 	};
 
 	const handleChange = (e) => {
