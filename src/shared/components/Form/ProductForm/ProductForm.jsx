@@ -9,7 +9,7 @@ import { useCategory } from "../../../../features/categories/hooks/useCategory";
 export function ProductForm({ onSubmit, productData }) {
 	const { categories } = useCategory();
 	const [product, setProduct] = useState(productData || {});
-	const [isSubmitting, setIsSubmitting] = useState(false); // Novo estado
+	const [isSubmitting, setIsSubmitting] = useState(false);
 	const navigate = useNavigate();
 
 	const handleOnSubmit = async (e) => {

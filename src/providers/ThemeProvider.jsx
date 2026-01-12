@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { ThemeContext } from "./ThemeContext";
+import { ThemeContext } from "./useTheme";
 
 export function ThemeProvider({ children }) {
 	const [theme, setTheme] = useState(localStorage.getItem("theme") || "dark");

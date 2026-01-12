@@ -1,9 +1,10 @@
+import { Spinner } from "../Spinner/Spinner";
 import styles from "./Loading.module.css";
 
 export function Loading() {
 	return (
 		<div className={styles.screen}>
-			<div className={styles.spinner}></div>
+			<Spinner length="middle" />
 		</div>
 	);
 }

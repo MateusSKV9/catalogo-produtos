@@ -15,7 +15,7 @@ export function SectionHeader({ title, form, isLoading }) {
 				<Button handleClick={handleClick} color="red">
 					Cancelar
 				</Button>
-				<Button color="blue" type="save" submit="submit" form={form} isLoading={isLoading} >
+				<Button color="blue" type="save" submit="submit" form={form} isLoading={isLoading}>
 					Salvar
 				</Button>
 			</div>

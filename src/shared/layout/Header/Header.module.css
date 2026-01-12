@@ -126,6 +126,8 @@
 	transition: all 0.15s ease;
 }
 
+/* ######## MEDIA QUERIES ######## */
+
 @media screen and (min-width: 769px) {
 	.button_menu {
 		display: none;

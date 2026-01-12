@@ -1,5 +1,4 @@
 .screen {
-	/* position: absolute; */
 	height: 200px;
 	width: 100%;
 	background-color: var(--secondary);
@@ -8,22 +7,4 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
-}
-
-.spinner {
-	width: 60px;
-	height: 60px;
-	border: 4px solid var(--highlight);
-	animation: load 1s ease infinite;
-	border-color: transparent var(--highlight);
-	border-radius: 50%;
-}
-
-@keyframes load {
-	to {
-		transform: rotate(0deg);
-	}
-	from {
-		transform: rotate(360deg);
-	}
 }

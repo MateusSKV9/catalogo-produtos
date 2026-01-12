@@ -32,12 +32,12 @@ export function Button({ type, children, handleClick, color, submit, form, style
 	return (
 		<button
 			onClick={handleClick}
-			className={`${styles.button} ${styles[color]} ${styles[type]} ${style} ${styles.disabled && isLoading}`}
+			className={`${styles.button} ${styles[color]} ${styles[type]} ${style}`}
 			type={submit || "button"}
 			form={form}
 			disabled={isLoading}
 		>
-			{isLoading ? <Spinner /> : children}
+			{isLoading ? <Spinner length="small" /> : children}
 			{icons[type]}
 		</button>
 	);

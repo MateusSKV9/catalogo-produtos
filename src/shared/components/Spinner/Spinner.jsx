@@ -1,5 +1,5 @@
 import styles from "./Spinner.module.css";
 
-export function Spinner() {
-	return <div className={styles.spinner}></div>;
+export function Spinner({ length }) {
+	return <div className={`${styles.spinner} ${styles[length]}`}></div>;
 }

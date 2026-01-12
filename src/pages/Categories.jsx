@@ -18,12 +18,7 @@ export function Categories() {
 		clearSelection,
 	} = useCategory();
 
-	// Se existe uma categoria selecionada, estamos editando
 	const isEditing = !!selectedCategory;
-
-	const handleEditClick = (id) => {
-		getCategoryById(id);
-	};
 
 	const handleSave = async (data) => {
 		if (isEditing) {
@@ -32,6 +27,14 @@ export function Categories() {
 		} else {
 			await addCategory(data);
 		}
+	};
+
+	const handleEditClick = (id) => {
+		getCategoryById(id);
+	};
+
+	const handleOnRemove = (id) => {
+		remove(id);
 	};
 
 	return (
@@ -47,8 +50,8 @@ export function Categories() {
 								key={cat.id}
 								id={cat.id}
 								name={cat.name}
-								setToEdit={() => handleEditClick(cat.id)} // Passa o ID para buscar
-								handleRemove={remove}
+								setToEdit={() => handleEditClick(cat.id)}
+								handleRemove={() => handleOnRemove(cat.id)}
 							/>
 						))}
 					</ul>
