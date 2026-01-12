@@ -4,22 +4,14 @@ import { ProductForm } from "../shared/components/Form/ProductForm/ProductForm";
 import { useProduct } from "../features/products/hooks/useProduct";
 import { Loading } from "./../shared/components/Loading/Loading";
 import styles from "./Pages.module.css";
-import { useState } from "react";
+import { useLoading } from "../hooks/useLoading";
 
 export function ProductEdit() {
 	const { id } = useParams();
 	const { product, productsLoading, updateProduct } = useProduct(id);
-	const [isLoading, setIsLoading] = useState(false);
+	const { isLoading, run } = useLoading();
 
-	const handleUpdate = async () => {
-		setIsLoading(true);
-		try {
-			await updateProduct(id);
-		} catch (error) {
-			console.error(error);
-		}
-		setIsLoading(false);
-	};
+	const handleUpdate = () => run(() => updateProduct(id));
 
 	return (
 		<section className={`${styles.section} ${styles.middle_width}`}>
@@ -28,6 +20,7 @@ export function ProductEdit() {
 			) : (
 				<>
 					<SectionHeader title={`Editando ${product.name}`} form="product-form" isLoading={isLoading} />
+
 					<ProductForm onSubmit={handleUpdate} key={product?.id} productData={product} />
 				</>
 			)}

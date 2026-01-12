@@ -1,29 +1,13 @@
-import { useState } from "react";
 import { Button } from "../../../../shared/components/Button/Button";
 import styles from "./Category.module.css";
+import { useLoading } from "../../../../hooks/useLoading";
 
 export function Category({ id, name, handleRemove, setToEdit }) {
-	const [isLoading, setIsLoading] = useState(false);
+	const { isLoading, run } = useLoading();
 
-	const handleOnRemove = async () => {
-		setIsLoading(true);
-		try {
-			await handleRemove(id);
-		} catch (error) {
-			console.error(error);
-		}
-		setIsLoading(false);
-	};
+	const handleOnRemove = () => run(() => handleRemove(id));
 
-	const handleOnEdit = async () => {
-		setIsLoading(true);
-		try {
-			await setToEdit(id);
-		} catch (error) {
-			console.error(error);
-		}
-		setIsLoading(false);
-	};
+	const handleOnEdit = () => run(() => setToEdit(id));
 
 	return (
 		<li className={styles.item}>

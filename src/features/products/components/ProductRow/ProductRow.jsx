@@ -2,27 +2,19 @@ import { useNavigate } from "react-router";
 import { Button } from "../../../../shared/components/Button/Button";
 import styles from "./../ProductTable/ProductTable.module.css";
 import { useCategory } from "../../../categories/hooks/useCategory";
-import { useState } from "react";
-import { Spinner } from "../../../../shared/components/Spinner/Spinner";
+import { useLoading } from "../../../../hooks/useLoading";
 
 export function ProductRow({ product, onDelete }) {
 	const { id, name, categoryId, value } = product;
 	const { categories } = useCategory();
-	const [isDeleting, setIsDeleting] = useState(false);
+	const { isLoading, run } = useLoading();
 
 	const navigate = useNavigate();
 
 	const categoryData = categories.find((category) => category.id === categoryId);
 
-	const handleDelete = async () => {
-		setIsDeleting(true);
-		try {
-			await onDelete(id);
-		} catch (error) {
-			console.error(error);
-			setIsDeleting(false);
-		}
-	};
+	const handleDelete = () => run(() => onDelete(id));
+
 	const handleEdit = () => navigate(`/product/${id}`);
 
 	return (
@@ -44,7 +36,7 @@ export function ProductRow({ product, onDelete }) {
 				<Button color="blue" type="edit" handleClick={handleEdit}>
 					Editar
 				</Button>
-				<Button color="red" type="delete" handleClick={handleDelete} isLoading={isDeleting}>
+				<Button color="red" type="delete" handleClick={handleDelete} isLoading={isLoading}>
 					Deletar
 				</Button>
 			</div>
