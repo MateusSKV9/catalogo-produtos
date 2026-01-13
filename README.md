@@ -9,42 +9,36 @@ O objetivo principal do projeto foi criar uma **solução para uma necessidade r
 
 ## 📋 Funcionalidades
 
-- **Criação de produtos:** o usuário pode adicionar novos produtos à tabela de produtos, informando:
-
+- **Criação de produtos:** o usuário pode adicionar novos produtos à lista de produtos, informando:
   - Nome
   - Valor
   - Categoria
 
-- **Listagem de produtos:** .
+- **Listagem de produtos:** o sistema permite a listagem de produtos em formato de tabela.
 
 - **Edição de produtos:** produtos já cadastrados podem ser editados para correção ou atualização de informações.
 
-- **Exclusão de produtos:** exclusão com confirmação via modal para evitar ações acidentais.
-
-- **Registro de alterações:** cada item mantém um histórico de todas as alterações realizadas.
-
-- **Reset de registro de alterações:** o histórico de alterações de um item pode ser reiniciado.
+- **Exclusão de produtos:** o sistema permite a exclusão de produtos.
 
 - **Gerenciamento de categorias:**
-
   - Adição de novas categorias
-  - Exclusão de categorias existentes
+  - Listagem de categorias
+  - Edição de categorias
+  - Exclusão de categorias
   - Filtragem de produtos por categoria
 
-- **Mudança de tema:** alternância entre **tema claro e escuro**.
+- **Mudança de tema:** alternância entre **tema claro e escuro** com pesistência no LocalStorage.
 
 ---
 
 ## 🛠️ Requisitos Técnicos
-
-- **Validação de formulários:** prevenção de campos inválidos.
-- **Responsividade:** layout adaptado para diferentes tamanhos de tela.
+- **Validação básica de formulários:** prevenção de campos inválidos.
+- **Responsividade:** layout adaptado de maneira eficiente e eficaz para diferentes tamanhos de tela.
 - **Persistência de dados:** Mock API REST com JSON Server, permitindo operações CRUD persistentes via HTTP.
 
 ---
 
 ## 🧠 Arquitetura e Padrões Utilizados
-
 - **Arquitetura baseada em features:** organização do código por domínio de negócio (`products`, `categories`), facilitando manutenção e escalabilidade.
 - **Componentização reutilizável:** componentes compartilhados centralizados em `shared/components`.
 - **Separação de responsabilidades:**
@@ -57,7 +51,6 @@ O objetivo principal do projeto foi criar uma **solução para uma necessidade r
 ## ⚛️ Hooks e Recursos do React
 
 ### Hooks nativos
-
 - `useState` — gerenciamento de estado local
 - `useEffect` — efeitos colaterais e sincronização de dados
 - `useMemo` — otimização de valores computados
@@ -65,7 +58,6 @@ O objetivo principal do projeto foi criar uma **solução para uma necessidade r
 - `useContext` — compartilhamento de estado global
 
 ### Hooks personalizados
-
 - `useProduct` — gerenciamento completo de produtos (CRUD, regras de negócio)
 - `useCategory` — controle e manipulação de categorias
 - `useLoading` — controle reutilizável de estados de carregamento
@@ -76,10 +68,8 @@ O objetivo principal do projeto foi criar uma **solução para uma necessidade r
 ## 🌐 Gerenciamento de Estado Global
 
 - **Context API** utilizada para:
-
   - Gerenciamento de tema
   - Compartilhamento de dados de categorias entre componentes
-
 - Redução de **prop drilling** através do uso estratégico de providers
 - Uso consciente de **prop drilling** apenas quando o escopo é local e controlado
 
@@ -89,10 +79,8 @@ O objetivo principal do projeto foi criar uma **solução para uma necessidade r
 
 - **React Router DOM** para controle de rotas da aplicação
 - Uso de:
-
   - `useNavigate` para navegação programática
   - `useSearchParams` para filtros e estados persistidos na URL
-
 - Separação clara entre **páginas** e **componentes**
 
 ---
@@ -100,7 +88,6 @@ O objetivo principal do projeto foi criar uma **solução para uma necessidade r
 ## 📁 Estrutura de Pastas
 
 A aplicação segue uma organização pensada para projetos escaláveis:
-
 - `features/` — domínios principais da aplicação (produtos e categorias)
 - `hooks/` — hooks globais reutilizáveis
 - `providers/` — Context Providers
@@ -110,7 +97,6 @@ A aplicação segue uma organização pensada para projetos escaláveis:
 ---
 
 ## 🚀 Tecnologias Utilizadas
-
 - **React** (Hooks, Context API, React Router)
 - **JavaScript (ES6+)**
 - **CSS Modules**
@@ -121,13 +107,11 @@ A aplicação segue uma organização pensada para projetos escaláveis:
 ---
 
 ## 💻 Como Executar o Projeto
-
 1. **Acesse o link:**
    👉 [https://catalogo-produtos-ten.vercel.app/](https://catalogo-produtos-ten.vercel.app/)
 
 ---
 
 ## 📄 Licença
-
 Este projeto está sob a licença **MIT**.
 Consulte o arquivo `LICENSE` para mais informações.
