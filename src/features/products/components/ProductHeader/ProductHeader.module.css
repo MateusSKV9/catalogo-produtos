@@ -37,8 +37,9 @@
 .container_filter {
 	padding: 0px;
 
-	& > * {
+	& > button {
 		padding: 12px;
+		height: 100%;
 	}
 }
 
@@ -57,14 +58,14 @@
 		padding: 12px 20px;
 	}
 
-  .container_filter {
-    padding: 0px;
-    
-    & > * {
-      width: 100%;
-      padding: 12px;
-    }
-  }
+	.container_filter {
+		padding: 0px;
+
+		& > * {
+			width: 100%;
+			padding: 12px;
+		}
+	}
 
 	.container_badges {
 		flex-direction: column;

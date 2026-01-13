@@ -48,13 +48,29 @@
 }
 
 .wrapper {
-	display: none;
 	align-items: center;
 	gap: 8px;
+	transition: all 0.12 ease;
+	position: absolute;
+	top: calc(100% + 10px);
+
+	background: var(--secondary);
+	padding: 10px;
+
+	opacity: 0;
+	visibility: hidden;
+	transform: translateY(-10px);
+	transition: all 0.15s ease;
+	pointer-events: none;
+	z-index: 10;
 }
 
 .wrapper.active {
 	display: flex;
+	opacity: 1;
+	visibility: visible;
+	transform: translateY(0);
+	pointer-events: auto;
 }
 
 .list,
@@ -138,6 +154,14 @@
 
 	.wrapper {
 		display: flex !important;
+
+		position: static;
+		opacity: 1 !important;
+		visibility: visible !important;
+		transform: none !important;
+		pointer-events: auto !important;
+		padding: 0;
+		width: auto;
 	}
 }
 
