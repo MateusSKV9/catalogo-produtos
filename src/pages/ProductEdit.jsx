@@ -11,7 +11,7 @@ export function ProductEdit() {
 	const { product, productsLoading, updateProduct } = useProduct(id);
 	const { isLoading, run } = useLoading();
 
-	const handleUpdate = () => run(() => updateProduct(id));
+	const handleUpdate = (dataFromForm) => run(() => updateProduct(dataFromForm));
 
 	return (
 		<section className={`${styles.section} ${styles.middle_width}`}>

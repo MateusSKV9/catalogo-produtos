@@ -22,8 +22,8 @@ export function ProductForm({ onSubmit, productData }) {
 			navigate("/");
 		} catch (error) {
 			console.error(error);
-			setIsSubmitting(false);
 		}
+		setIsSubmitting(false);
 	};
 
 	const handleChange = (e) => {
