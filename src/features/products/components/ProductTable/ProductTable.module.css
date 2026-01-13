@@ -27,6 +27,10 @@
 	background-color: var(--secondary);
 }
 
+.header .actions {
+  justify-content: center;
+}
+
 .actions {
 	text-align: center;
 	border: 2px solid var(--primary);
