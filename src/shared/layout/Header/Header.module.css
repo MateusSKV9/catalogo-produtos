@@ -111,7 +111,6 @@
 	font-size: 1.1rem;
 	outline: none;
 	color: var(--white);
-	text-align: center;
 
 	&::placeholder {
 		color: var(--white);
@@ -208,6 +207,7 @@
 
 	.input {
 		width: 100%;
+		text-align: center;
 		&::placeholder {
 			text-align: center;
 		}

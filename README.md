@@ -1,16 +1,133 @@
-# React + Vite
+# 📦 Catálogo de Produtos
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+<img src="preview.png" alt="Imagem do projeto" />
 
-Currently, two official plugins are available:
+Este projeto é uma **aplicação web desenvolvida em React** que representa um **Catálogo de Produtos**.
+O objetivo principal do projeto foi criar uma **solução para uma necessidade real do cotidiano**, ao mesmo tempo em que possibilitou a aplicação prática de conceitos avançados do **ecossistema React**, desde arquitetura até gerenciamento de estado e performance.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## React Compiler
+## 📋 Funcionalidades
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- **Criação de produtos:** o usuário pode adicionar novos produtos à tabela de produtos, informando:
 
-## Expanding the ESLint configuration
+  - Nome
+  - Valor
+  - Categoria
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- **Listagem de produtos:** .
+
+- **Edição de produtos:** produtos já cadastrados podem ser editados para correção ou atualização de informações.
+
+- **Exclusão de produtos:** exclusão com confirmação via modal para evitar ações acidentais.
+
+- **Registro de alterações:** cada item mantém um histórico de todas as alterações realizadas.
+
+- **Reset de registro de alterações:** o histórico de alterações de um item pode ser reiniciado.
+
+- **Gerenciamento de categorias:**
+
+  - Adição de novas categorias
+  - Exclusão de categorias existentes
+  - Filtragem de produtos por categoria
+
+- **Mudança de tema:** alternância entre **tema claro e escuro**.
+
+---
+
+## 🛠️ Requisitos Técnicos
+
+- **Validação de formulários:** prevenção de campos inválidos.
+- **Responsividade:** layout adaptado para diferentes tamanhos de tela.
+- **Persistência de dados:** Mock API REST com JSON Server, permitindo operações CRUD persistentes via HTTP.
+
+---
+
+## 🧠 Arquitetura e Padrões Utilizados
+
+- **Arquitetura baseada em features:** organização do código por domínio de negócio (`products`, `categories`), facilitando manutenção e escalabilidade.
+- **Componentização reutilizável:** componentes compartilhados centralizados em `shared/components`.
+- **Separação de responsabilidades:**
+  - Lógica de negócio isolada em **hooks personalizados**
+  - Comunicação e regras encapsuladas em **services**
+- **CSS Modules:** estilos escopados por componente, evitando conflitos globais.
+
+---
+
+## ⚛️ Hooks e Recursos do React
+
+### Hooks nativos
+
+- `useState` — gerenciamento de estado local
+- `useEffect` — efeitos colaterais e sincronização de dados
+- `useMemo` — otimização de valores computados
+- `useCallback` — memoização de funções
+- `useContext` — compartilhamento de estado global
+
+### Hooks personalizados
+
+- `useProduct` — gerenciamento completo de produtos (CRUD, regras de negócio)
+- `useCategory` — controle e manipulação de categorias
+- `useLoading` — controle reutilizável de estados de carregamento
+- `useTheme` — controle de tema (claro/escuro) via Context API
+
+---
+
+## 🌐 Gerenciamento de Estado Global
+
+- **Context API** utilizada para:
+
+  - Gerenciamento de tema
+  - Compartilhamento de dados de categorias entre componentes
+
+- Redução de **prop drilling** através do uso estratégico de providers
+- Uso consciente de **prop drilling** apenas quando o escopo é local e controlado
+
+---
+
+## 🧭 Roteamento e Navegação
+
+- **React Router DOM** para controle de rotas da aplicação
+- Uso de:
+
+  - `useNavigate` para navegação programática
+  - `useSearchParams` para filtros e estados persistidos na URL
+
+- Separação clara entre **páginas** e **componentes**
+
+---
+
+## 📁 Estrutura de Pastas
+
+A aplicação segue uma organização pensada para projetos escaláveis:
+
+- `features/` — domínios principais da aplicação (produtos e categorias)
+- `hooks/` — hooks globais reutilizáveis
+- `providers/` — Context Providers
+- `shared/` — componentes e layouts compartilhados
+- `pages/` — páginas associadas às rotas
+
+---
+
+## 🚀 Tecnologias Utilizadas
+
+- **React** (Hooks, Context API, React Router)
+- **JavaScript (ES6+)**
+- **CSS Modules**
+- **Vite**
+- **JSON Server** (persistência de dados)
+- **LocalStorage** (para tema)
+
+---
+
+## 💻 Como Executar o Projeto
+
+1. **Acesse o link:**
+   👉 [https://catalogo-produtos-ten.vercel.app/](https://catalogo-produtos-ten.vercel.app/)
+
+---
+
+## 📄 Licença
+
+Este projeto está sob a licença **MIT**.
+Consulte o arquivo `LICENSE` para mais informações.
