@@ -14,7 +14,7 @@
 	--inter: "Inter", Arial, Helvetica, sans-serif;
 }
 
-[data-theme="dark"] {
+[data-theme="light"] {
 	--primary: whitesmoke;
 	--text: #19191a;
 }
