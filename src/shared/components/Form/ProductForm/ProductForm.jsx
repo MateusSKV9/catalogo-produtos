@@ -43,6 +43,7 @@ export function ProductForm({ onSubmit, productData }) {
 				label="Nome"
 				name="name"
 				id="name"
+				type="text"
 				value={product?.name || ""}
 				placeholder="Digite o nome do produto"
 				handleChange={handleChange}
@@ -52,6 +53,7 @@ export function ProductForm({ onSubmit, productData }) {
 					label="Valor (R$)"
 					name="value"
 					id="value"
+					type="number"
 					value={product?.value || ""}
 					handleChange={handleChange}
 					placeholder="Digite o valor do produto"

@@ -40,7 +40,7 @@ export function ProductHeader({ quantityProducts, quantityCategories }) {
 					<Button handleClick={handleCategories} type="default">
 						Categorias
 					</Button>
-					<div ref={filterRef} style={{ position: "relative" }}>
+					<div className={styles.container_filter} ref={filterRef} style={{ position: "relative" }}>
 						<Button color={categoryId && "highlight"} handleClick={handleFilter} type="default">
 							Filtrar por
 						</Button>

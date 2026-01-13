@@ -3,22 +3,34 @@ import { Button } from "../../../../shared/components/Button/Button";
 import styles from "./../ProductTable/ProductTable.module.css";
 import { useCategory } from "../../../categories/hooks/useCategory";
 import { useLoading } from "../../../../hooks/useLoading";
+import { useState } from "react";
 
 export function ProductRow({ product, onDelete }) {
 	const { id, name, categoryId, value } = product;
 	const { categories } = useCategory();
 	const { isLoading, run } = useLoading();
+	const [showActionsMobile, setShowActionsMobile] = useState(false);
 
 	const navigate = useNavigate();
 
 	const categoryData = categories.find((category) => category.id === categoryId);
 
-	const handleDelete = () => run(() => onDelete(id));
+	const handleDelete = (e) => {
+		e.stopPropagation();
+		run(() => onDelete(id));
+	};
 
-	const handleEdit = () => navigate(`/product/${id}`);
+	const handleEdit = (e) => {
+		e.stopPropagation();
+		navigate(`/product/${id}`);
+	};
+
+	const handleShowActionsMobile = () => {
+		setShowActionsMobile((prev) => !prev);
+	};
 
 	return (
-		<li className={styles.row}>
+		<li onClick={handleShowActionsMobile} className={`${styles.row} ${showActionsMobile ? styles.active : ""}`}>
 			<svg className={styles.arrow} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640">
 				<path
 					fill="currentColor"
@@ -27,12 +39,12 @@ export function ProductRow({ product, onDelete }) {
 			</svg>
 
 			<div className={styles.first_coll}>
-				<span className={`${styles.td}`}>{name}</span>
+				<span className={`${styles.td} ${styles.name}`}>{name}</span>
 				<span className={styles.td}>{categoryData ? categoryData.name : "Sem categoria"}</span>
 				<span className={styles.td}>R$ {value}</span>
 			</div>
 
-			<div className={`${styles.actions} ${styles.buttons}`}>
+			<div className={`${styles.buttons} ${styles.actions}`}>
 				<Button color="blue" type="edit" handleClick={handleEdit}>
 					Editar
 				</Button>

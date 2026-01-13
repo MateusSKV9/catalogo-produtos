@@ -10,9 +10,9 @@
 	color: var(--white);
 	position: fixed;
 	z-index: 9999;
+	gap: 8px;
 	border: 1px solid rgba(255, 255, 255, 0.2);
 	box-shadow: 0px 3px 3px rgba(91, 91, 91, 0.1);
-	/* flex-wrap: wrap; */
 }
 
 .button_menu {
@@ -23,7 +23,6 @@
 	color: var(--white);
 	right: 4px;
 	width: 40px;
-	/* width: 6vw; */
 	top: 4px;
 	background-color: var(--black);
 	border: none;
@@ -49,9 +48,13 @@
 }
 
 .wrapper {
-	display: flex;
+	display: none;
 	align-items: center;
 	gap: 8px;
+}
+
+.wrapper.active {
+	display: flex;
 }
 
 .list,
@@ -132,11 +135,14 @@
 	.button_menu {
 		display: none;
 	}
+
+	.wrapper {
+		display: flex !important;
+	}
 }
 
 @media screen and (max-width: 768px) {
 	.header {
-		/* display: none; */
 		flex-direction: column;
 		gap: 16px;
 		flex-wrap: wrap;
@@ -169,5 +175,16 @@
 
 	.form {
 		text-align: center;
+	}
+
+	.form .icon {
+		display: none;
+	}
+
+	.input {
+		width: 100%;
+		&::placeholder {
+			text-align: center;
+		}
 	}
 }

@@ -7,3 +7,20 @@
 	border-radius: 5px 5px 0px 0px;
 	text-align: center;
 }
+
+.p {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 4px;
+	justify-content: center;
+	align-items: center;
+}
+
+.p a {
+	font-weight: bold;
+	transition: all 0.15s ease;
+}
+
+.p a:hover {
+	color: var(--highlight);
+}

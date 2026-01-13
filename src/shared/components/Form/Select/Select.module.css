@@ -1,5 +1,10 @@
 .select {
 	font-size: 1rem;
-	padding: 6px;
+	padding: 8px;
 	border-radius: 4px;
+
+	&:focus {
+		outline: 1px solid var(--highlight);
+		border-color: var(--highlight);
+	}
 }

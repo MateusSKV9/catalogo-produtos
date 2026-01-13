@@ -1,6 +1,6 @@
 import styles from "./Input.module.css";
 
-export function Input({ id, name, value, label, placeholder, handleChange }) {
+export function Input({ id, name, value, type, label, placeholder, handleChange, }) {
 	return (
 		<div className={styles.form_group}>
 			<label className={styles.label} htmlFor={id}>
@@ -8,7 +8,7 @@ export function Input({ id, name, value, label, placeholder, handleChange }) {
 			</label>
 			<input
 				className={styles.input}
-				type="text"
+				type={type}
 				name={name}
 				id={id}
 				value={value}

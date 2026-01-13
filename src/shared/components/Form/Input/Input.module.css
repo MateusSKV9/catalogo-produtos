@@ -9,7 +9,13 @@
 }
 
 .input {
-	padding: 6px;
+	padding: 8px;
 	font-size: 1rem;
 	border-radius: 4px;
+	outline: none;
+
+	&:focus {
+		outline: 1px solid var(--highlight);
+    border-color: var(--highlight);
+	}
 }

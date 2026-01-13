@@ -33,18 +33,6 @@ export function Categories() {
 		setSaving(false);
 	};
 
-	// const handleEditClick = (id) => {
-	// 	getCategoryById(id);
-	// };
-
-	// const handleOnRemove = async (id) => {
-	// 	try {
-	// 		await remove(id);
-	// 	} catch (error) {
-	// 		console.error(error);
-	// 	}
-	// };
-
 	return (
 		<section className={`${styles.section} ${styles.middle_width}`}>
 			{categoriesLoading ? (
@@ -59,7 +47,9 @@ export function Categories() {
 					</ul>
 					<SectionHeader
 						title={isEditing ? "Editando Categoria" : "Adicionar categoria"}
+						isEditing={isEditing}
 						form="category-form"
+            clearSelection={clearSelection}
 						isLoading={saving}
 					/>
 

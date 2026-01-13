@@ -2,10 +2,16 @@ import { useNavigate } from "react-router";
 import { Button } from "../Button/Button";
 import styles from "./SectionHeader.module.css";
 
-export function SectionHeader({ title, form, isLoading }) {
+export function SectionHeader({ title, form, isLoading, clearSelection, isEditing }) {
 	const navigate = useNavigate();
 
-	const handleClick = () => navigate("/");
+	const handleClick = () => {
+		if (isEditing) {
+			clearSelection();
+		} else {
+			navigate("/");
+		}
+	};
 
 	return (
 		<div className={styles.wrapper}>
@@ -13,7 +19,7 @@ export function SectionHeader({ title, form, isLoading }) {
 
 			<div className={styles.container_buttons}>
 				<Button handleClick={handleClick} color="red">
-					Cancelar
+					{isEditing ? "Cancelar" : "Voltar"}
 				</Button>
 				<Button color="blue" type="save" submit="submit" form={form} isLoading={isLoading}>
 					Salvar
