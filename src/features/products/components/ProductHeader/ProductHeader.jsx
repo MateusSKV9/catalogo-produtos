@@ -44,7 +44,7 @@ export function ProductHeader({ quantityProducts, quantityCategories }) {
 						<Button color={categoryId && "highlight"} handleClick={handleFilter} type="default">
 							Filtrar por
 						</Button>
-						{showBoxFilter && <CategoryFilter />}
+						{showBoxFilter && <CategoryFilter handleFilter={handleFilter} />}
 					</div>
 				</div>
 			</div>

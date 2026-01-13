@@ -2,7 +2,7 @@ import { useCategory } from "../../hooks/useCategory";
 import styles from "./CategoryFilter.module.css";
 import { useNavigate, useSearchParams } from "react-router";
 
-export function CategoryFilter() {
+export function CategoryFilter({ handleFilter }) {
 	const { categories } = useCategory();
 	const navigate = useNavigate();
 	const [searchParams] = useSearchParams();
@@ -14,6 +14,7 @@ export function CategoryFilter() {
 		} else {
 			navigate(`/?category=${id}`);
 		}
+		handleFilter();
 	};
 
 	return (
