@@ -6,6 +6,13 @@ Este projeto é uma **aplicação web desenvolvida em React** que representa um 
 O objetivo principal do projeto foi criar uma **solução para uma necessidade real do cotidiano**, ao mesmo tempo em que possibilitou a aplicação prática de conceitos avançados do **ecossistema React**, desde arquitetura até gerenciamento de estado e performance.
 
 #### 📍 Acesse o link: https://catalogo-produtos-react.vercel.app/
+#### 🛡️ Segurança e controle de uso
+Para evitar abuso em ambiente público, a API implementa:
+- **Rate limit**: até 8 operações de escrita por minuto por IP (POST, PUT, PATCH e DELETE)
+- **Regra de negócio**: limite máximo de 30 produtos cadastrados
+
+Essas medidas garantem estabilidade e evitam spam automático.
+
 ---
 
 ## 📋 Funcionalidades
