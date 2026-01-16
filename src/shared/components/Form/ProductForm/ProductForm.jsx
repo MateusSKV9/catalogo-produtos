@@ -21,9 +21,10 @@ export function ProductForm({ onSubmit, productData }) {
 			await onSubmit(product);
 			navigate("/");
 		} catch (error) {
-			console.error(error);
+			alert(error.message || "Erro ao salvar produtos.");
+		} finally {
+			setIsSubmitting(false);
 		}
-		setIsSubmitting(false);
 	};
 
 	const handleChange = (e) => {

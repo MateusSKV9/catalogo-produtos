@@ -22,7 +22,22 @@ export const productService = {
 			body: JSON.stringify(product),
 		});
 
-		if (!response.ok) throw new Error("Erro ao criar produto.");
+		if (!response.ok) {
+			const error = await response.json();
+
+			if (response.status === 403) {
+				throw new Error(
+					error.error || "Limite de produtos atingido. Apague alguns produtos já exitentes para liberar espaço."
+				);
+			}
+
+			if (response.status === 429) {
+				throw new Error("Muitas requisições. Tente novamente em instantes.");
+			}
+
+			throw new Error("Erro ao criar produto");
+		}
+
 		return response.json();
 	},
 
