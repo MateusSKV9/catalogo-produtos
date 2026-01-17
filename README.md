@@ -16,7 +16,6 @@ Essas medidas garantem estabilidade e evitam spam automático.
 ---
 
 ## 📋 Funcionalidades
-
 - **Criação de produtos:** o usuário pode adicionar novos produtos à lista de produtos, informando:
   - Nome
   - Valor
@@ -94,7 +93,6 @@ Essas medidas garantem estabilidade e evitam spam automático.
 ---
 
 ## 📁 Estrutura de Pastas
-
 A aplicação segue uma organização pensada para projetos escaláveis:
 - `features/` — domínios principais da aplicação (produtos e categorias)
 - `hooks/` — hooks globais reutilizáveis
