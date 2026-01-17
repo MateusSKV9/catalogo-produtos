@@ -114,11 +114,6 @@ A aplicação segue uma organização pensada para projetos escaláveis:
 
 ---
 
-## 💻 Como Executar o Projeto
-
-
----
-
 ## 📄 Licença
 Este projeto está sob a licença **MIT**.
 Consulte o arquivo `LICENSE` para mais informações.
