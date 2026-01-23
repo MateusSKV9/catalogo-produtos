@@ -2,6 +2,7 @@
 
 <img src="preview.png" alt="Imagem do projeto" />
 
+## ℹ️ Sobre
 Este projeto é uma **aplicação web desenvolvida em React** que representa um **Catálogo de Produtos**.
 O objetivo principal do projeto foi criar uma **solução para uma necessidade real do cotidiano**, ao mesmo tempo em que possibilitou a aplicação prática de conceitos avançados do **ecossistema React**, desde arquitetura até gerenciamento de estado e performance.
 
