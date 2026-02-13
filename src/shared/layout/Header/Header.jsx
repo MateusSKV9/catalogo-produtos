@@ -50,7 +50,7 @@ export function Header() {
 
 	return (
 		<header className={styles.header}>
-			<button ref={btnRef} onClick={toggleMenu} className={styles.button_menu} type="button">
+			<button ref={btnRef} onClick={toggleMenu} className={styles.button_menu} type="button" title="Menu">
 				<svg className={styles.menu_icon} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640">
 					<path
 						fill="currentColor"
@@ -90,7 +90,7 @@ export function Header() {
 						placeholder="Pesquisar"
 					/>
 				</form>
-				<button onClick={toggleTheme} className={styles.themeButton} type="button">
+				<button onClick={toggleTheme} className={styles.themeButton} type="button" title="Tema">
 					<svg
 						className={`${styles.icon} ${styles.themeIcon}`}
 						xmlns="http://www.w3.org/2000/svg"

@@ -1,9 +1,11 @@
 .footer {
 	background-color: var(--secondary);
-	padding: 8px;
+	padding: 10px 8px;
 	display: flex;
+	flex-direction: column;
 	justify-content: center;
 	align-items: center;
+	gap: 8px;
 	border-radius: 5px 5px 0px 0px;
 	text-align: center;
 }
@@ -23,4 +25,8 @@
 
 .p a:hover {
 	color: var(--highlight);
+}
+
+.rights {
+	font-size: 0.9rem;
 }

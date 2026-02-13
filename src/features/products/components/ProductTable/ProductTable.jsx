@@ -15,11 +15,11 @@ export function ProductTable({ products, onDelete }) {
 				</div>
 			</div>
 
-			<div className={styles.body}>
+			<ul className={styles.body}>
 				{products.map((product) => (
 					<ProductRow key={product.id} product={product} onDelete={onDelete} />
 				))}
-			</div>
+			</ul>
 		</ul>
 	);
 }
