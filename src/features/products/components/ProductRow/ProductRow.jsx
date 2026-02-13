@@ -41,7 +41,7 @@ export function ProductRow({ product, onDelete }) {
 			<div className={styles.first_coll}>
 				<span className={`${styles.td} ${styles.name}`}>{name}</span>
 				<span className={styles.td}>{categoryData ? categoryData.name : "Sem categoria"}</span>
-				<span className={styles.td}>R$ {value}</span>
+				<span className={styles.td}>R$ {Number(value).toFixed(2)}</span>
 			</div>
 
 			<div className={`${styles.buttons} ${styles.actions}`}>
