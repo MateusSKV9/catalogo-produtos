@@ -1,33 +1,33 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { Form } from "../../../../shared/components/Form/Form/Form";
 import { Input } from "../../../../shared/components/Form/Input/Input";
+import { useForm } from "react-hook-form";
 
-export function CategoryForm({ handleSubmit, categoryData }) {
-	const [category, setCategory] = useState(categoryData);
+export function CategoryForm({ onSubmit, categoryData }) {
+	const {
+		register,
+		formState: { errors },
+		handleSubmit,
+		reset,
+	} = useForm({ defaultValues: categoryData || {} });
 
 	useEffect(() => {
-		setCategory(categoryData);
-	}, [categoryData]);
+		reset(categoryData || {});
+	}, [categoryData, reset]);
 
-	const handleCategory = (e) => {
-		e.preventDefault();
-		handleSubmit(category);
-		setCategory({});
-	};
-
-	const handleChange = (e) => {
-		setCategory((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+	const handleOnSubmit = (data) => {
+		onSubmit(data);
+		reset();
 	};
 
 	return (
-		<Form id="category-form" handleOnSubmit={handleCategory}>
+		<Form id="category-form" handleOnSubmit={handleSubmit(handleOnSubmit)}>
 			<Input
-				handleChange={handleChange}
-				value={category?.name || ""}
 				id="name"
 				label="Categoria"
-				name="name"
+				error={errors.name?.message}
 				placeholder="Digite o nome da categoria"
+				{...register("name", { required: "Nome é obrigatório!" })}
 			/>
 		</Form>
 	);

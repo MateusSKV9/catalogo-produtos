@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { Input } from "../Input/Input";
 import { Select } from "../Select/Select";
 import styles from "./ProductForm.module.css";
@@ -6,66 +5,52 @@ import { useNavigate } from "react-router";
 import { Form } from "../Form/Form";
 import { useCategory } from "../../../../features/categories/hooks/useCategory";
 
+import { useForm } from "react-hook-form";
+
 export function ProductForm({ onSubmit, productData }) {
 	const { categories } = useCategory();
-	const [product, setProduct] = useState(productData || {});
-	const [isSubmitting, setIsSubmitting] = useState(false);
 	const navigate = useNavigate();
 
-	const handleOnSubmit = async (e) => {
-		e.preventDefault();
-		if (isSubmitting) return;
+	const {
+		register,
+		handleSubmit,
+		formState: { errors },
+	} = useForm({ defaultValues: productData || {} });
 
-		setIsSubmitting(true);
+	const handleOnSubmit = async (data) => {
 		try {
-			await onSubmit(product);
+			await onSubmit(data);
 			navigate("/");
 		} catch (error) {
 			alert(error.message || "Erro ao salvar produtos.");
-		} finally {
-			setIsSubmitting(false);
 		}
 	};
 
-	const handleChange = (e) => {
-		setProduct((prev) => ({ ...prev, [e.target.name]: e.target.value }));
-	};
-
-	const handleCategory = (e) => {
-		setProduct((prev) => ({
-			...prev,
-			categoryId: e.target.value,
-		}));
-	};
-
 	return (
-		<Form id="product-form" handleOnSubmit={handleOnSubmit} className={styles.form}>
+		<Form id="product-form" handleOnSubmit={handleSubmit(handleOnSubmit)} className={styles.form}>
 			<Input
-				label="Nome"
-				name="name"
 				id="name"
+				label="Nome"
 				type="text"
-				value={product?.name || ""}
 				placeholder="Digite o nome do produto"
-				handleChange={handleChange}
+				error={errors.name?.message}
+				{...register("name", { required: "Nome é obrigatório" })}
 			/>
 			<div className={styles.wrapper}>
 				<Input
-					label="Valor (R$)"
-					name="value"
 					id="value"
+					label="Valor (R$)"
 					type="number"
-					value={product?.value || ""}
-					handleChange={handleChange}
+					step={"0.01"}
 					placeholder="Digite o valor do produto"
+					error={errors.value?.message}
+					{...register("value", {
+						required: "Valor é obrigatório",
+						valueAsNumber: true,
+						min: { value: 0, message: "O valor deve ser no mínimo 0." },
+					})}
 				/>
-				<Select
-					label="Categoria"
-					value={product?.categoryId ? product.categoryId : ""}
-					id={product?.categoryId}
-					options={categories}
-					handleCategory={handleCategory}
-				/>
+				<Select label="Categoria" options={categories} {...register("categoryId")} />
 			</div>
 		</Form>
 	);

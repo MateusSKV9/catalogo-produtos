@@ -53,7 +53,7 @@ export function Categories() {
 						isLoading={saving}
 					/>
 
-					<CategoryForm categoryData={selectedCategory || {}} handleSubmit={handleSave} />
+					<CategoryForm categoryData={selectedCategory || {}} onSubmit={handleSave} />
 				</>
 			)}
 		</section>

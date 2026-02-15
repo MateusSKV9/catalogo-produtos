@@ -16,6 +16,10 @@
 
 	&:focus {
 		outline: 1px solid var(--highlight);
-    border-color: var(--highlight);
+		border-color: var(--highlight);
 	}
+}
+
+.error {
+	color: var(--accent-red);
 }

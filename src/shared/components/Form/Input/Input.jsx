@@ -1,21 +1,20 @@
+import { forwardRef } from "react";
 import styles from "./Input.module.css";
 
-export function Input({ id, name, value, type, label, placeholder, handleChange, }) {
+export const Input = forwardRef(({ label, error, ...props }, ref) => {
 	return (
 		<div className={styles.form_group}>
-			<label className={styles.label} htmlFor={id}>
+			<label className={styles.label} htmlFor={props.id}>
 				{label}
 			</label>
-			<input
-				className={styles.input}
-				type={type}
-				name={name}
-				id={id}
-				value={value}
-				onChange={handleChange}
-				placeholder={placeholder}
-				required
-			/>
+			<input ref={ref} className={styles.input} {...props} />
+			{error && (
+				<span>
+					<span className={styles.error}>*</span> {error}
+				</span>
+			)}
 		</div>
 	);
-}
+});
+
+Input.displayName = "Input";
