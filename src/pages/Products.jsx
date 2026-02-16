@@ -11,7 +11,7 @@ export function Products() {
 	const { categoriesLoading } = useCategory();
 	const [searchParams] = useSearchParams();
 	const queryProducts = searchParams.get("search")?.toLowerCase() || "";
-	const filterByCategory = searchParams.get("category")?.toLowerCase() || "";
+	const filterByCategory = searchParams.get("category") || "";
 
 	const displayProducts = filterByCategory
 		? products.filter((product) => product.categoryId === filterByCategory)
