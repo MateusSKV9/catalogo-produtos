@@ -6,6 +6,8 @@ import { Form } from "../Form/Form";
 import { useCategory } from "../../../../features/categories/hooks/useCategory";
 
 import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { productSchema } from "../../../../schemas/productSchema";
 
 export function ProductForm({ onSubmit, productData }) {
 	const { categories } = useCategory();
@@ -15,11 +17,15 @@ export function ProductForm({ onSubmit, productData }) {
 		register,
 		handleSubmit,
 		formState: { errors },
-	} = useForm({ defaultValues: productData || {} });
+	} = useForm({
+		resolver: zodResolver(productSchema),
+		defaultValues: productData ? { ...productData, value: String(productData.value) } : {},
+	});
 
 	const handleOnSubmit = async (data) => {
 		try {
-			await onSubmit(data);
+			const playLoad = productData?.id ? { id: productData.id, ...data } : { id: crypto.randomUUID(), ...data };
+			await onSubmit(playLoad);
 			navigate("/");
 		} catch (error) {
 			alert(error.message || "Erro ao salvar produtos.");
@@ -34,7 +40,7 @@ export function ProductForm({ onSubmit, productData }) {
 				type="text"
 				placeholder="Digite o nome do produto"
 				error={errors.name?.message}
-				{...register("name", { required: "Nome é obrigatório" })}
+				{...register("name")}
 			/>
 			<div className={styles.wrapper}>
 				<Input
@@ -44,11 +50,7 @@ export function ProductForm({ onSubmit, productData }) {
 					step={"0.01"}
 					placeholder="Digite o valor do produto"
 					error={errors.value?.message}
-					{...register("value", {
-						required: "Valor é obrigatório",
-						valueAsNumber: true,
-						min: { value: 0, message: "O valor deve ser no mínimo 0." },
-					})}
+					{...register("value")}
 				/>
 				<Select label="Categoria" options={categories} {...register("categoryId")} />
 			</div>

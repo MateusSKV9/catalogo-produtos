@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Category } from "../features/categories/components/Category/Category";
 import { CategoryForm } from "../features/categories/components/CategoryForm/CategoryForm";
 import { useCategory } from "../features/categories/hooks/useCategory";
@@ -33,6 +33,12 @@ export function Categories() {
 		setSaving(false);
 	};
 
+	useEffect(() => {
+		return () => {
+			clearSelection();
+		};
+	}, [clearSelection]);
+
 	return (
 		<section className={`${styles.section} ${styles.middle_width}`}>
 			{categoriesLoading ? (
@@ -49,11 +55,15 @@ export function Categories() {
 						title={isEditing ? "Editando Categoria" : "Adicionar categoria"}
 						isEditing={isEditing}
 						form="category-form"
-            clearSelection={clearSelection}
+						clearSelection={clearSelection}
 						isLoading={saving}
 					/>
 
-					<CategoryForm categoryData={selectedCategory || {}} onSubmit={handleSave} />
+					<CategoryForm
+						key={selectedCategory?.id || "new"}
+						categoryData={selectedCategory || {}}
+						onSubmit={handleSave}
+					/>
 				</>
 			)}
 		</section>
