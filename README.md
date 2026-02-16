@@ -40,7 +40,7 @@ Essas medidas garantem estabilidade e evitam spam automático.
 ---
 
 ## 🛠️ Requisitos Técnicos
-- **Validação básica de formulários:** prevenção de campos inválidos.
+- **Validação robusta de formulários com schema**
 - **Responsividade:** layout adaptado de maneira eficiente e eficaz para diferentes tamanhos de tela.
 - **Persistência de dados:** Mock API REST com JSON Server, permitindo operações CRUD persistentes via HTTP.
 
