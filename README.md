@@ -73,6 +73,18 @@ Essas medidas garantem estabilidade e evitam spam automático.
 
 ---
 
+### 🧾 Validação de Formulários
+- **`React Hook Form`** para gerenciamento performático e otimizado de formulários
+- **`Zod`** para validação declarativa e segura baseada em schema
+- **Benefícios:**
+
+  - Validação tipada e centralizada
+  - Mensagens de erro controladas
+  - Melhor performance (menos re-renderizações)
+  - Código mais previsível e escalável
+
+---
+
 ## 🌐 Gerenciamento de Estado Global
 
 - **Context API** utilizada para:
@@ -104,12 +116,16 @@ A aplicação segue uma organização pensada para projetos escaláveis:
 ---
 
 ## 🚀 Tecnologias Utilizadas
-- **React** (Hooks, Context API, React Router)
+- **React** (Hooks, Context API)
+- **React Hook Form**
+- **Zod**
+- **React Router DOM**
 - **JavaScript (ES6+)**
 - **CSS Modules**
+- **date-fns**
 - **Vite**
 - **JSON Server** (persistência de dados)
-- **LocalStorage** (para tema)
+- **LocalStorage (tema)**
 
 ---
 
