@@ -8,22 +8,18 @@ import { useLoading } from "../hooks/useLoading";
 
 export function ProductEdit() {
 	const { id } = useParams();
-	const { product, productsLoading, updateProduct } = useProduct(id);
+	const { product, updateProduct } = useProduct(id);
 	const { isLoading, run } = useLoading();
 
 	const handleUpdate = (dataFromForm) => run(() => updateProduct(dataFromForm));
 
+	if (!product) return <Loading />;
+
 	return (
 		<section className={`${styles.section} ${styles.middle_width}`}>
-			{productsLoading ? (
-				<Loading />
-			) : (
-				<>
-					<SectionHeader title={`Editando ${product.name}`} form="product-form" isLoading={isLoading} />
+			<SectionHeader title={`Editando ${product?.name}`} form="product-form" isLoading={isLoading} />
 
-					<ProductForm onSubmit={handleUpdate} key={product?.id} productData={product} />
-				</>
-			)}
+			<ProductForm onSubmit={handleUpdate} key={product?.id} productData={product} />
 		</section>
 	);
 }

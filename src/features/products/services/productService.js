@@ -57,6 +57,10 @@ export const productService = {
 			method: "DELETE",
 		});
 
-		if (!response.ok) throw new Error("Erro ao deletar produto.");
+		if (!response.ok) {
+			const error = new Error("Erro ao deletar produto.");
+			error.status = response.status;
+			throw error;
+		}
 	},
 };

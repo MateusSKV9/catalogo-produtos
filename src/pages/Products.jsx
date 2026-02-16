@@ -5,34 +5,35 @@ import { useProduct } from "../features/products/hooks/useProduct";
 import { Loading } from "../shared/components/Loading/Loading";
 import { useSearchParams } from "react-router";
 import { useCategory } from "../features/categories/hooks/useCategory";
+import { useMemo } from "react";
 
 export function Products() {
-	const { products, productsLoading, removeProduct } = useProduct();
+	const { products, isLoading, isFetching, deleteProduct } = useProduct();
 	const { categoriesLoading } = useCategory();
 	const [searchParams] = useSearchParams();
 	const queryProducts = searchParams.get("search")?.toLowerCase() || "";
 	const filterByCategory = searchParams.get("category") || "";
 
-	const displayProducts = filterByCategory
-		? products.filter((product) => product.categoryId === filterByCategory)
-		: products.filter((product) => product.name.toLowerCase().includes(queryProducts));
+	const displayProducts = useMemo(() => {
+		return filterByCategory
+			? products.filter((product) => product.categoryId === filterByCategory)
+			: products.filter((product) => product.name.toLowerCase().includes(queryProducts));
+	}, [filterByCategory, queryProducts, products]);
 
 	const uniqueCategoriesCount = new Set(displayProducts.map((product) => product.categoryId)).size;
 
+	if (isLoading || categoriesLoading) return <Loading />;
+
 	return (
 		<section className={styles.section}>
-			{productsLoading || categoriesLoading ? (
-				<Loading />
-			) : (
+			<ProductHeader quantityProducts={displayProducts.length} quantityCategories={uniqueCategoriesCount} />
+			{displayProducts.length > 0 ? (
 				<>
-					<ProductHeader quantityProducts={displayProducts.length} quantityCategories={uniqueCategoriesCount} />
-
-					{products.length > 0 ? (
-						<ProductTable products={displayProducts} onDelete={removeProduct} />
-					) : (
-						<h2 className={styles.empty_list}>Lista vazia [;-;]</h2>
-					)}
+					<ProductTable products={displayProducts} onDelete={deleteProduct} />
+					{isFetching && <span>Atualizando...</span>}
 				</>
+			) : (
+				<h2 className={styles.empty_list}>Lista vazia [;-;]</h2>
 			)}
 		</section>
 	);

@@ -1,72 +1,72 @@
-import { useCallback, useEffect, useState } from "react";
 import { productService } from "../services/productService";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 
 export function useProduct(id) {
-	const [products, setProducts] = useState([]);
-	const [product, setProduct] = useState({});
-	const [productsLoading, setProductsLoading] = useState(true);
+	const queryClient = useQueryClient();
 
-	const loadProducts = useCallback(async () => {
-		try {
-			const data = await productService.getAll();
-			setProducts(data);
-		} catch (error) {
-			console.error(error);
-		} finally {
-			setProductsLoading(false);
-		}
-	}, []);
+	const {
+		data: products = [],
+		isLoading,
+		isFetching,
+	} = useQuery({ queryKey: ["products"], queryFn: productService.getAll });
 
-	async function updateProduct(project) {
-		try {
-			await productService.update(project);
-		} catch (error) {
-			console.error(error);
-		}
-	}
+	const { data: product, isLoading: isGetting } = useQuery({
+		queryKey: ["product", id],
+		queryFn: () => productService.getProduct(id),
+		enabled: !!id,
+	});
 
-	async function addProduct(product) {
-		try {
-			await productService.create(product);
-			await loadProducts();
-		} catch (error) {
-			console.error(error);
-		} finally {
-			setProductsLoading(false);
-		}
-	}
+	const createMutation = useMutation({
+		mutationFn: productService.create,
+		onSuccess: (newProduct) => {
+			queryClient.setQueryData(["products"], (prev = []) => [...prev, newProduct]);
+		},
+	});
 
-	async function removeProduct(id) {
-		try {
-			await productService.delete(id);
-			loadProducts();
-		} catch (error) {
-			console.error(error);
-		} finally {
-			setProductsLoading(false);
-		}
-	}
+	const updateMutation = useMutation({
+		mutationFn: productService.update,
+		onSuccess: (updatedProduct) => {
+			queryClient.setQueryData(["products"], (prev = []) =>
+				prev.map((product) => (product.id === updatedProduct.id ? updatedProduct : product))
+			);
 
-	useEffect(() => {
-		if (!id) {
-			loadProducts();
-			return;
-		}
+			queryClient.setQueryData(["product", updatedProduct.id], updatedProduct);
+		},
+	});
 
-		const fetchProduct = async () => {
-			setProductsLoading(true);
-			try {
-				const data = await productService.getProduct(id);
-				setProduct(data);
-			} catch (error) {
-				console.error(error);
-			} finally {
-				setProductsLoading(false);
+	const deleteMutation = useMutation({
+		mutationFn: productService.delete,
+
+		onMutate: async (id) => {
+			await queryClient.cancelQueries({ queryKey: ["products"] });
+			const previousProducts = queryClient.getQueryData(["products"]);
+			queryClient.setQueryData(["products"], (prev = []) => prev.filter((product) => product.id !== id));
+			return { previousProducts };
+		},
+
+		onError: (err, id, context) => {
+			if (err?.status !== 404) {
+				if (context?.previousProducts) {
+					queryClient.setQueryData(["products"], context.previousProducts);
+				}
 			}
-		};
+		},
 
-		fetchProduct();
-	}, [id, loadProducts]);
+		onSettled: (_, __, id) => {
+			queryClient.invalidateQueries({ queryKey: ["products"] });
+			queryClient.invalidateQueries({ queryKey: ["product", id] });
+		},
+	});
 
-	return { products, product, productsLoading, loadProducts, addProduct, removeProduct, updateProduct };
+	return {
+		products,
+		product,
+		isLoading,
+		isFetching,
+		isGetting,
+		isCreating: createMutation.isPending,
+		createProduct: createMutation.mutateAsync,
+		updateProduct: updateMutation.mutateAsync,
+		deleteProduct: deleteMutation.mutateAsync,
+	};
 }
