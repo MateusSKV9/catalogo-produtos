@@ -39,6 +39,33 @@ Essas medidas garantem estabilidade e evitam spam automático.
 
 ---
 
+## ⚡ Gerenciamento de Estado Assíncrono com React Query
+
+A aplicação utiliza **TanStack React Query** para controle avançado de estado assíncrono e cache de dados da API.
+
+#### Principais recursos implementados:
+
+- **Cache automático de requisições**
+- **Sincronização inteligente entre múltiplos componentes**
+- **Optimistic Update no delete**
+- **Atualização manual de cache no create e update**
+- **Rollback automático em caso de erro**
+- **Tratamento de concorrência (404 tratado como sucesso lógico)**
+- **Cancelamento de queries durante mutações**
+- **Refetch automático ao focar na aba**
+- **Separação clara entre loading inicial (`isLoading`) e refetch (`isFetching`)**
+
+- **Benefícios obtidos:**
+  - Melhor experiência de usuário (UI instantânea)
+  - Redução de requisições desnecessárias
+  - Maior controle sobre consistência de dados
+  - Arquitetura preparada para ambiente multiusuário
+  - Código mais declarativo e previsível
+
+Os hooks personalizados useProduct e useCategory encapsulam toda a lógica de queries e mutations, mantendo os componentes limpos e focados apenas na renderização.
+
+---
+
 ## 🛠️ Requisitos Técnicos
 - **Validação robusta de formulários com schema**
 - **Responsividade:** layout adaptado de maneira eficiente e eficaz para diferentes tamanhos de tela.
@@ -117,6 +144,7 @@ A aplicação segue uma organização pensada para projetos escaláveis:
 
 ## 🚀 Tecnologias Utilizadas
 - **React** (Hooks, Context API)
+- **TanStack React Query**
 - **React Hook Form**
 - **Zod**
 - **React Router DOM**
