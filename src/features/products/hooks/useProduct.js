@@ -39,6 +39,7 @@ export function useProduct(id) {
 
 		onMutate: async (id) => {
 			await queryClient.cancelQueries({ queryKey: ["products"] });
+			await queryClient.cancelQueries({ queryKey: ["product", id] });
 			const previousProducts = queryClient.getQueryData(["products"]);
 			queryClient.setQueryData(["products"], (prev = []) => prev.filter((product) => product.id !== id));
 			return { previousProducts };

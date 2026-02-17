@@ -21,7 +21,7 @@ export function CategoryForm({ onSubmit, categoryData }) {
 
 	const handleOnSubmit = (data) => {
 		try {
-			const playLoad = categoryData.id ? { id: categoryData.id, ...data } : data;
+			const playLoad = categoryData.id ? { id: categoryData.id, ...data } : { id: crypto.randomUUID(), ...data };
 			onSubmit(playLoad);
 		} catch (error) {
 			alert(error);

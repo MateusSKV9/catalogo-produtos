@@ -6,14 +6,12 @@ import { useProduct } from "../features/products/hooks/useProduct";
 export function NewProduct() {
 	const { createProduct, isCreating } = useProduct();
 
-	const handleSubmit = async (data) => {
-		await createProduct(data);
-	};
+	
 
 	return (
 		<section className={`${styles.section} ${styles.middle_width}`}>
 			<SectionHeader title="Adicionando Produto" form="product-form" isLoading={isCreating} />
-			<ProductForm onSubmit={handleSubmit} />
+			<ProductForm onSubmit={createProduct} />
 		</section>
 	);
 }

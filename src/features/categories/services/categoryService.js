@@ -46,6 +46,10 @@ export const categoryService = {
 			headers: { "Content-Type": "application/json" },
 		});
 
-		if (!response.ok) throw new Error("Erro algo atualizar categoria.");
+		if (!response.ok) {
+			const error = new Error("Erro ao deletar");
+			error.status = response.status;
+			throw error;
+		}
 	},
 };
