@@ -66,6 +66,7 @@ export function useProduct(id) {
 		isFetching,
 		isGetting,
 		isCreating: createMutation.isPending,
+		isUpdating: updateMutation.isPending,
 		createProduct: createMutation.mutateAsync,
 		updateProduct: updateMutation.mutateAsync,
 		deleteProduct: deleteMutation.mutateAsync,

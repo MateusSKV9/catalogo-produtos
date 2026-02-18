@@ -1,6 +1,6 @@
 import { Link, useNavigate, useSearchParams } from "react-router";
 import styles from "./Header.module.css";
-import { useTheme } from "../../../providers/useTheme";
+import { useTheme } from "../../../hooks/useTheme";
 import { useEffect, useRef, useState } from "react";
 
 export function Header() {

@@ -8,7 +8,7 @@ import { useCategory } from "../features/categories/hooks/useCategory";
 import { useMemo } from "react";
 
 export function Products() {
-	const { products, isLoading, isFetching, deleteProduct } = useProduct();
+	const { products, isLoading, isCreating, isUpdating, deleteProduct } = useProduct();
 	const { categoriesLoading } = useCategory();
 	const [searchParams] = useSearchParams();
 	const queryProducts = searchParams.get("search")?.toLowerCase() || "";
@@ -30,7 +30,7 @@ export function Products() {
 			{displayProducts.length > 0 ? (
 				<>
 					<ProductTable products={displayProducts} onDelete={deleteProduct} />
-					{isFetching && <span>Atualizando...</span>}
+					{(isCreating || isUpdating) && <span>Atualizando...</span>}
 				</>
 			) : (
 				<h2 className={styles.empty_list}>Lista vazia [;-;]</h2>
