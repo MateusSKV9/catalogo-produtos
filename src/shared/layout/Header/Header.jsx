@@ -1,7 +1,7 @@
-import { Link, useNavigate, useSearchParams } from "react-router";
 import styles from "./Header.module.css";
 import { useTheme } from "../../../hooks/useTheme";
 import { useEffect, useRef, useState } from "react";
+import { Link, useNavigate, useSearchParams } from "react-router-dom";
 
 export function Header() {
 	const navigate = useNavigate();

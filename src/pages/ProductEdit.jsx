@@ -1,12 +1,12 @@
-import { useParams } from "react-router";
 import { SectionHeader } from "../shared/components/SectionHeader/SectionHeader";
 import { ProductForm } from "../shared/components/Form/ProductForm/ProductForm";
 import { useProduct } from "../features/products/hooks/useProduct";
 import { Loading } from "./../shared/components/Loading/Loading";
 import styles from "./Pages.module.css";
 import { useLoading } from "../hooks/useLoading";
+import { useParams } from "react-router-dom";
 
-export function ProductEdit() {
+export default function ProductEdit() {
 	const { id } = useParams();
 	const { product, updateProduct } = useProduct(id);
 	const { isLoading, run } = useLoading();

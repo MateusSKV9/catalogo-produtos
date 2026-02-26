@@ -1,13 +1,13 @@
 import { Input } from "../Input/Input";
 import { Select } from "../Select/Select";
 import styles from "./ProductForm.module.css";
-import { useNavigate } from "react-router";
 import { Form } from "../Form/Form";
 import { useCategory } from "../../../../features/categories/hooks/useCategory";
 
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { productSchema } from "../../../../schemas/productSchema";
+import { useNavigate } from "react-router-dom";
 
 export function ProductForm({ onSubmit, productData }) {
 	const { categories } = useCategory();

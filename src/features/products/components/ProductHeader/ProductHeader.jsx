@@ -1,8 +1,8 @@
-import { useNavigate, useSearchParams } from "react-router";
 import { Button } from "../../../../shared/components/Button/Button";
 import styles from "./ProductHeader.module.css";
 import { CategoryFilter } from "../../../categories/components/CategoryFilter/CategoryFilter";
 import { useEffect, useRef, useState } from "react";
+import { useNavigate, useSearchParams } from "react-router-dom";
 
 export function ProductHeader({ quantityProducts, quantityCategories }) {
 	const navigate = useNavigate();

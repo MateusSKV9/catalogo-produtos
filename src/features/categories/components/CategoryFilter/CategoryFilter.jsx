@@ -1,6 +1,6 @@
+import { useNavigate, useSearchParams } from "react-router-dom";
 import { useCategory } from "../../hooks/useCategory";
 import styles from "./CategoryFilter.module.css";
-import { useNavigate, useSearchParams } from "react-router";
 
 export function CategoryFilter({ handleFilter }) {
 	const { categories } = useCategory();

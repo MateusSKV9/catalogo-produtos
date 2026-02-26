@@ -1,9 +1,9 @@
-import { useNavigate } from "react-router";
 import { Button } from "../../../../shared/components/Button/Button";
 import styles from "./../ProductTable/ProductTable.module.css";
 import { useCategory } from "../../../categories/hooks/useCategory";
 import { useLoading } from "../../../../hooks/useLoading";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export function ProductRow({ product, onDelete }) {
 	const { id, name, categoryId, value } = product;

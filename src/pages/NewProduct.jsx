@@ -3,10 +3,8 @@ import { ProductForm } from "../shared/components/Form/ProductForm/ProductForm";
 import { SectionHeader } from "../shared/components/SectionHeader/SectionHeader";
 import { useProduct } from "../features/products/hooks/useProduct";
 
-export function NewProduct() {
+export default function NewProduct() {
 	const { createProduct, isCreating } = useProduct();
-
-	
 
 	return (
 		<section className={`${styles.section} ${styles.middle_width}`}>

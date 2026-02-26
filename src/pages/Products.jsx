@@ -3,9 +3,9 @@ import { ProductTable } from "../features/products/components/ProductTable/Produ
 import { ProductHeader } from "../features/products/components/ProductHeader/ProductHeader";
 import { useProduct } from "../features/products/hooks/useProduct";
 import { Loading } from "../shared/components/Loading/Loading";
-import { useSearchParams } from "react-router";
 import { useCategory } from "../features/categories/hooks/useCategory";
 import { useMemo } from "react";
+import { useSearchParams } from "react-router-dom";
 
 export function Products() {
 	const { products, isLoading, isCreating, isUpdating, deleteProduct } = useProduct();

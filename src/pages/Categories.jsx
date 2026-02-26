@@ -1,4 +1,4 @@
-import { useSearchParams } from "react-router";
+import { useSearchParams } from "react-router-dom";
 import { Category } from "../features/categories/components/Category/Category";
 import { CategoryForm } from "../features/categories/components/CategoryForm/CategoryForm";
 import { useCategory } from "../features/categories/hooks/useCategory";
@@ -6,7 +6,7 @@ import { Loading } from "../shared/components/Loading/Loading";
 import { SectionHeader } from "../shared/components/SectionHeader/SectionHeader";
 import styles from "./Pages.module.css";
 
-export function Categories() {
+export default function Categories() {
 	const [searchParams, setSearchParamns] = useSearchParams({});
 	const id = searchParams.get("id");
 	const clearSelection = () => setSearchParamns({});
