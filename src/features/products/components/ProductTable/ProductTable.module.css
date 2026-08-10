@@ -28,7 +28,7 @@
 }
 
 .header .actions {
-  justify-content: center;
+	justify-content: center;
 }
 
 .actions {
@@ -115,7 +115,7 @@
 	}
 }
 
-@media screen and (max-width: 768px) {
+@media (max-width: 768px) {
 	.body {
 		gap: 30px;
 	}

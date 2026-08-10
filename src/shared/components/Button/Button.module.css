@@ -22,10 +22,6 @@
 	}
 }
 
-.icon {
-	width: 25px;
-}
-
 .default {
 	background-color: var(--secondary);
 	width: max-content;

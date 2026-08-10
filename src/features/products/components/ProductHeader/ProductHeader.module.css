@@ -36,6 +36,7 @@
 
 .container_filter {
 	padding: 0px;
+	position: "relative";
 
 	& > button {
 		padding: 12px;
@@ -43,7 +44,7 @@
 	}
 }
 
-@media screen and (max-width: 768px) {
+@media (max-width: 768px) {
 	.intro {
 		flex-direction: column;
 		gap: 10px;

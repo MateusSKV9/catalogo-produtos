@@ -147,7 +147,7 @@
 
 /* ######## MEDIA QUERIES ######## */
 
-@media screen and (min-width: 769px) {
+@media (min-width: 769px) {
 	.button_menu {
 		display: none;
 	}
@@ -165,7 +165,7 @@
 	}
 }
 
-@media screen and (max-width: 768px) {
+@media (max-width: 768px) {
 	.header {
 		flex-direction: column;
 		gap: 16px;
