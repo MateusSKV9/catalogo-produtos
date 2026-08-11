@@ -148,7 +148,7 @@ A aplicação segue uma organização pensada para projetos escaláveis:
 - **React Hook Form**
 - **Zod**
 - **React Router DOM**
-- **JavaScript (ES6+)**
+- **TypeScript (ES6+)**
 - **CSS Modules**
 - **date-fns**
 - **Vite**
